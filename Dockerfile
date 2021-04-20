@@ -9,9 +9,9 @@ RUN set -eux && \
   cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
   apk del .build-dependencies && \
   docker-php-ext-install bcmath pdo_mysql && \
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
-  composer config -g repos.packagist composer https://packagist.jp && \
   apk add npm
+
+COPY --from=composer:2.0.8 /usr/bin/composer /usr/bin/composer
 
 ENV APP_ROOT /work
 RUN mkdir -p $APP_ROOT
