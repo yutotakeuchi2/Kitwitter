@@ -25,8 +25,8 @@ Route::get('/index','TweetGetController@tweetGet');
 
 Route::group(['middleware' => 'auth:user'], function()
 {
-    Route::get('users/index', 'UserController@index');
-    Route::get('users/edit', 'UserController@edit');
-    Route::post('users/edit', 'UserController@update');
+    Route::get('users/index', 'UsersController@index');
+    Route::get('users/edit', 'UsersController@edit');
+    Route::post('users/edit', 'UsersController@update');
 });
 
