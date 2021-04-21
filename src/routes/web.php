@@ -20,3 +20,7 @@ Route::post('/tweet/store', 'TweetController@store');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/tweet/add', 'TweetController@add');
 Route::get('/index','HomeController@index');
+
+Route::get('/index','HomeController@index');
+
+ROute::get('/index','TweetGetController@tweetGet');
