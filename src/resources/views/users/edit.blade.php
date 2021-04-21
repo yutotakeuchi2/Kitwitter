@@ -7,11 +7,7 @@
       <div class="card">
         <div class="card-header">ユーザー登録内容の変更</div>
         <div class="card-body">
-<<<<<<< HEAD
           <form method="POST" action="{{ action('UsersController@update') }}">
-=======
-          <form method="POST" action="{{ action('UserController@update') }}">
->>>>>>> 3fbbda4 (user編集機能の製作【未】)
             <div class="form-group">
               <label for="name">
                 名前

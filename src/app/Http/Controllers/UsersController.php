@@ -13,7 +13,7 @@ class UsersController extends Controller
     //userデータの取得
     public function index() {
 
-        return view('users.index', ['user' => Auth::user() ]);
+        return view('users.index', ['user' => User::user() ]);
     }
     //userデータの編集
     public function edit() {
@@ -30,8 +30,6 @@ class UsersController extends Controller
     public function update(Request $request) {
 
         $user_form = $request->all();
-
-        $user = Auth::user();
 
         $user = Auth::user();
         //不要な「_token」の削除

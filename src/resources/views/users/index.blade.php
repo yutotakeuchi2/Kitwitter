@@ -24,11 +24,7 @@
                 <input class="form-control" value="{{ $user->email }}">
               </div>
             </div>
-<<<<<<< HEAD
               <a href="{{ action('UsersController@edit') }}"><button class="user-btn">ユーザー登録内容の編集</button></a>
-=======
-              <a href="{{ action('UserController@edit') }}"><button class="user-btn">ユーザー登録内容の編集</button></a>
->>>>>>> 3fbbda4 (user編集機能の製作【未】)
         </div>
       </div>
     </div>
