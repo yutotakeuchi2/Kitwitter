@@ -21,4 +21,12 @@ Route::get('/home', 'HomeController@home')->name('home');
 
 Route::get('/index','HomeController@index');
 
-ROute::get('/index','TweetGetController@tweetGet');
+Route::get('/index','TweetGetController@tweetGet');
+
+Route::group(['middleware' => 'auth:user'], function()
+{
+    Route::get('users/index', 'UserController@index');
+    Route::get('users/edit', 'UserController@edit');
+    Route::post('users/edit', 'UserController@update');
+});
+
