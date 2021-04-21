@@ -15,9 +15,15 @@ class CreateTweetsTable extends Migration
     {
         Schema::create('tweets', function (Blueprint $table) {
             $table->bigIncrements('id');
+<<<<<<< HEAD
             $table->string("text", 120)->nullable();
             $table->integer("user_id");
             $table->string("content_url", 1000)->nullable();
+=======
+            $table->string("text");
+            $table->integer("user_id");
+            $table->string("content_url");
+>>>>>>> 4bef672 (tweetのテーブル、モデル、コントローラーと最低限の処理を追加)
             $table->timestamps();
         });
     }
