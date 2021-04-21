@@ -72,6 +72,6 @@ class RegisterController extends Controller
 
     public function redirectPath()
     {
-        return '/service';
+        return '/index';
     }
 }

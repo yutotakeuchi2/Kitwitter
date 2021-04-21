@@ -37,10 +37,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectPath()
+public function redirectPath()
     {
-        return '/service';
+        return '/index';
     }
-
 }
 
