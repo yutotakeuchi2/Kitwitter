@@ -24,7 +24,7 @@
                 <input class="form-control" value="{{ $user->email }}">
               </div>
             </div>
-              <a href="{{ action('UserController@edit') }}"><button class="user-btn">ユーザー登録内容の編集</button></a>
+              <a href="{{ action('UsersController@edit') }}"><button class="user-btn">ユーザー登録内容の編集</button></a>
         </div>
       </div>
     </div>
