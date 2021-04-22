@@ -74,7 +74,6 @@
 
         <main class="py-4">
             @yield('content')
-            @yield('contents')
         </main>
     </div>
 </body>
