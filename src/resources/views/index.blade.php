@@ -25,6 +25,7 @@
                         @if(isset($d->content_url)):
                         <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
                         @endif
+                        <a href="/destroy/{{$d->id}}">削除</a>
                         @endforeach
                   </div>
                   </div>
