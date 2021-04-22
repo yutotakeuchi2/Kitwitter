@@ -22,6 +22,9 @@
                   <div class="card-body">
                         @foreach($data as $d)
                         <li>{{$d->text}}</li>
+                        @if(isset($d->content_url)):
+                        <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
+                        @endif
                         @endforeach
                   </div>
                   </div>

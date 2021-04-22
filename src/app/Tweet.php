@@ -20,7 +20,11 @@ class Tweet extends Model
         }
         $tweet->user_id = 1;
 
-        $tweet->save();
+        if($tweet->save()){
+            $tweets = Tweet::all();
+            return $tweets;
+        }
+
     }
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
