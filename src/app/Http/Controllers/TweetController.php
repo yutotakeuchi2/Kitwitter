@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tweet;
+use App\TweetGet;
 
 class TweetController extends Controller
 {
@@ -23,4 +24,14 @@ class TweetController extends Controller
         $data = Tweet::destroyTweet($tweet_id);
         return view("/index", compact("data"));
     }
+
+    public function tweetGet()
+    {
+        $tweets = new Tweet();
+
+        $data = $tweets->getTweet();
+
+        return view('/index',['data' => $data ]);
+    }
+
 }

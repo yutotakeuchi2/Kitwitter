@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class Tweet extends Model
 {
@@ -31,6 +32,22 @@ class Tweet extends Model
         Tweet::destroy($tweet_id);
         return Tweet::all()->sortByDesc('id');
     }
+<<<<<<< HEAD
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
+=======
+
+    public static function getTweet(){
+        $table ='tweets';
+
+        $guarded = array('id');
+
+        $timestamps = false;
+
+            $data = Tweet::all();
+            return $data;
+
+>>>>>>> ebadce3 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
+}
+
 }
