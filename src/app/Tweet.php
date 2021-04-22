@@ -21,7 +21,7 @@ class Tweet extends Model
         $tweet->user_id = 1;
 
         if($tweet->save()){
-            $tweets = Tweet::all();
+            $tweets = Tweet::all()->sortByDesc('id');
             return $tweets;
         }
 
@@ -29,7 +29,7 @@ class Tweet extends Model
 
     public static function destroyTweet($tweet_id){
         Tweet::destroy($tweet_id);
-        return Tweet::all();
+        return Tweet::all()->sortByDesc('id');
     }
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
