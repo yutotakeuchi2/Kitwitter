@@ -24,7 +24,7 @@
                               @csrf
                               <textarea name="sentence" type="text" class="tweet-textarea" cols="20"></textarea>
                               <input type="file" class="tweet-image" name="image">
-                              <input type="submit" class="tweet-button" value="ツイートする">
+                              <input type="button" class="tweet-button" value="ツイートする">
                         </form>
                   </div>
 
