@@ -18,7 +18,6 @@
                   </div>
                   </div>
 
-
                   <div class="tweet-wrapper card">
                         <h1>Tweet</h1>
                         <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweet-form">
