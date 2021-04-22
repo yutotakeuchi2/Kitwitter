@@ -26,6 +26,11 @@ class Tweet extends Model
         }
 
     }
+
+    public static function destroyTweet($tweet_id){
+        Tweet::destroy($tweet_id);
+        return Tweet::all();
+    }
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
 }

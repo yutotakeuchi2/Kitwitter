@@ -25,7 +25,7 @@ Route::get('/index','HomeController@index');
 Route::get('/index','HomeController@index');
 
 Route::get('/index','TweetGetController@tweetGet');
-
+Route::get('/destroy/{id}', 'TweetController@destroy');
 Route::group(['middleware' => 'auth:user'], function()
 {
     Route::get('users/index', 'UsersController@index');
