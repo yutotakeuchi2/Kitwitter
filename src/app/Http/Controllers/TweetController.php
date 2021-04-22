@@ -8,9 +8,9 @@ use App\Tweet;
 class TweetController extends Controller
 {
     public function store(Request $request){
-        if(Tweet::addTweet($request)){ //本来はコントローラーで保存する要素の制限をする→データの抽出
-         return view("/test",compact("request"));
-        };
+        $data = Tweet::addTweet($request);//本来はコントローラーで保存する要素の制限をする→データの抽出
+        return view("/index",compact("data"));
+
         //$tweet_text = Tweet::addTweet($request);
         //return view("/test",compact("tweet_text"));
     }
