@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 use Auth;
+=======
+>>>>>>> 922e604 (ツイート機能の実装)
 
 class Tweet extends Model
 {
@@ -20,6 +23,7 @@ class Tweet extends Model
         $path = $tweet_text->file('image')->store('public/tweetimage');
         $tweet->content_url = basename($path);
         }
+<<<<<<< HEAD
         $tweet->user_id = Auth::user()->id;
 
         if($tweet->save()){
@@ -27,6 +31,11 @@ class Tweet extends Model
             return response()->json($tweets);
         }
 
+=======
+        $tweet->user_id = 1;
+
+        $tweet->save();
+>>>>>>> 922e604 (ツイート機能の実装)
     }
 
     public static function destroyTweet($tweet_id){
