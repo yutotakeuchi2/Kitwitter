@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Tweet extends Model
 {
@@ -11,4 +12,17 @@ class Tweet extends Model
         $tweet->text = $tweet_text;
         $tweet->save();
     }
+
+    public static function getTweet(){
+        $table ='tweets';
+
+        $guarded = array('id');
+
+        $timestamps = false;
+
+            $data = Tweet::all();
+            return $data;
+
+}
+
 }
