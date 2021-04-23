@@ -5,7 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use Auth;
+=======
+>>>>>>> e85be90f75444a34db191953594e1c09ae2be779
 
 class Tweet extends Model
 {
@@ -20,11 +23,19 @@ class Tweet extends Model
         $path = $tweet_text->file('image')->store('public/tweetimage');
         $tweet->content_url = basename($path);
         }
+<<<<<<< HEAD
         $tweet->user_id = Auth::user()->id;
 
         if($tweet->save()){
             $tweets = Tweet::all()->sortByDesc('id');
             return response()->json($tweets);
+=======
+        $tweet->user_id = 1;
+
+        if($tweet->save()){
+            $tweets = Tweet::all()->sortByDesc('id');
+            return $tweets;
+>>>>>>> e85be90f75444a34db191953594e1c09ae2be779
         }
 
     }
@@ -34,9 +45,12 @@ class Tweet extends Model
         return Tweet::all()->sortByDesc('id');
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
 =======
+=======
+>>>>>>> e85be90f75444a34db191953594e1c09ae2be779
 
     public static function getTweet(){
         $table ='tweets';
@@ -48,7 +62,10 @@ class Tweet extends Model
             $data = Tweet::all();
             return $data;
 
+<<<<<<< HEAD
 >>>>>>> ebadce3 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
+=======
+>>>>>>> e85be90f75444a34db191953594e1c09ae2be779
 }
 
 }
