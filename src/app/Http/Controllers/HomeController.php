@@ -21,8 +21,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function home()
     {
         return view('home');
+    }
+
+    public function index(){
+    $hello = 'ようこそ、kitwitterへ';
+
+    return view('index',compact('hello'));
     }
 }
