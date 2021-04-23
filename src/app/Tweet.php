@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class Tweet extends Model
 {
@@ -19,11 +20,11 @@ class Tweet extends Model
         $path = $tweet_text->file('image')->store('public/tweetimage');
         $tweet->content_url = basename($path);
         }
-        $tweet->user_id = 1;
+        $tweet->user_id = Auth::user()->id;
 
         if($tweet->save()){
             $tweets = Tweet::all()->sortByDesc('id');
-            return $tweets;
+            return response()->json($tweets);
         }
 
     }

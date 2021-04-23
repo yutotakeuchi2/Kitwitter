@@ -18,21 +18,23 @@
                   </div>
                   </div>
 
+
                   <div class="tweet-wrapper card">
                         <h1>Tweet</h1>
-                        <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data">
+                        <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweet-form">
                               @csrf
                               <textarea name="sentence" type="text" class="tweet-textarea" cols="20"></textarea>
                               <input type="file" class="tweet-image" name="image">
-                              <input type="submit" class="tweet-button">
+                              <input type="button" class="tweet-button" value="ツイートする">
                         </form>
                   </div>
+                  <script src="{{ asset('/js/ajax.js')}}"></script>
                   <div class="card">
                   <div class="card-header">タイムライン</div>
                   <div class="card-body">
                         @foreach($data as $d)
-                        <li>{{$d->text}}</li>
-                        @if(isset($d->content_url)):
+                        <p>{{$d->text}}</p>
+                        @if(isset($d->content_url))
                         <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
                         @endif
                         <a href="/destroy/{{$d->id}}">削除</a>

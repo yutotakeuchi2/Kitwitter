@@ -20,6 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+        </script>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
