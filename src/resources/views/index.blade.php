@@ -28,7 +28,7 @@
                               <input type="button" class="tweet-button" value="ツイートする">
                         </form>
                   </div>
-                  <script src="{{ asset('/js/ajax.js')}}"></script>
+
                   <div class="card">
                   <div class="card-header">タイムライン</div>
                   <div class="card-body">
