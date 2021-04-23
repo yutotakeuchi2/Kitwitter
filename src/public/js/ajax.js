@@ -5,17 +5,20 @@ $("input").on('click', function () {
 })
 
 console.log("読み込みました");
-$('#tweet-form').on('click', function () { //そもそもボタンを押してもここから先が読み込めません
-  console.log("読み込みました");
+
+$(document).on('click', '.tweet-button',function () { //そもそもボタンを押してもここから先が読み込めません
+  console.log("クリックしました");
   $('.tweet-textarea').empty(); //もともとある要素を空にする
   console.log("空にしました");
+  console.log($('.tweet-textarea').val());
   //let userName = $('#search_name').val(); //検索ワードを取得
 
   $.ajax({
-    type: 'POST',
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content') },
+    type: 'post',
     url: '/tweet/store', //後述するweb.phpのURLと同じ形にする
     data: {
-      'tweet': $('#tweet_form').val(), //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
+      'tweet':1 //$('.tweet_form').val(), //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
     },
     dataType: 'json', //json形式で受け取る
   }).done(function (data) { //ajaxが成功したときの処理
