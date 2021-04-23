@@ -1,6 +1,6 @@
 //$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content') } });
 
-$("*").on('click', function () {
+$("input").on('click', function () {
   console.log("クリックされました");
 })
 
