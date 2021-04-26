@@ -23,7 +23,7 @@
                         <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweet-form">
                               {{ csrf_field() }}
                               <textarea name="sentence" type="text" class="tweet-textarea" cols="20"></textarea>
-                              <input type="file" class="tweet-image" name="image">
+                              <input type="file" accept="image/*,video/*" class="tweet-image" name="image">
                               <input type="submit" class="tweet-button" value="ツイートする">
                         </form>
                   </div>
@@ -34,7 +34,11 @@
                         @foreach($data as $d)
                         <p>{{$d->text}}</p>
                         @if(isset($d->content_url))
-                        <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
+                        @if ($d->content_extension == "jpg" || $d->content_extension == "png")
+                            <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
+                        @else
+                            <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}"></video>
+                        @endif
                         @endif
                         <a href="/destroy/{{$d->id}}">削除</a>
                         @endforeach

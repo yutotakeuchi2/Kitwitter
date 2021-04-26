@@ -18,7 +18,9 @@ class Tweet extends Model
         $tweet->text = strval($tweet_text->sentence);
         if(isset($tweet_text->image)){
         $path = $tweet_text->file('image')->store('public/tweetimage');
+        $content_extension = $tweet_text->file("image")->getClientOriginalExtension();
         $tweet->content_url = basename($path);
+        $tweet->content_extension = $content_extension;
         }
         $tweet->user_id = Auth::user()->id;
 
