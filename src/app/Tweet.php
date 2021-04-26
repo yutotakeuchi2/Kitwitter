@@ -12,10 +12,11 @@ class Tweet extends Model
 
     public static function addTweet($tweet_text){
         Log::info($tweet_text);
-        //return $tweet_text;
+//return $tweet_text;
 
         $tweet = new Tweet();
-        $tweet->text = strval($tweet_text->sentence);
+        //$tweet->text = strval($tweet_text->sentence);
+        $tweet->text = strval($tweet_text->tweet);
         if(isset($tweet_text->image)){
         $path = $tweet_text->file('image')->store('public/tweetimage');
         $content_extension = $tweet_text->file("image")->getClientOriginalExtension();
@@ -28,7 +29,8 @@ class Tweet extends Model
 
 
         if($tweet->save()){
-            $tweets = Tweet::all()->sortByDesc('id');
+            $tweets = Tweet::where("text", $tweet_text->tweet)->get();
+            //return $tweets;
             return response()->json($tweets);
         }
 

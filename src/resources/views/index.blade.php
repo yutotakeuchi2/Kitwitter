@@ -30,7 +30,8 @@
 
                   <div class="card">
                   <div class="card-header">タイムライン</div>
-                  <div class="card-body">
+                  <div class="card-body" id="time-line2"></div>
+                  <div class="card-body" id="time-line">
                         @foreach($data as $d)
                         <p>{{$d->text}}</p>
                         @if(isset($d->content_url))
