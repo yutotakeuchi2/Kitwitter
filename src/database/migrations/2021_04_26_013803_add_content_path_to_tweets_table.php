@@ -14,7 +14,7 @@ class AddContentPathToTweetsTable extends Migration
     public function up()
     {
         Schema::table('tweets', function (Blueprint $table) {
-            $table->string("content_extension");
+            $table->string("content_extension")->nullable();
         });
     }
 

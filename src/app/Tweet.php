@@ -22,7 +22,10 @@ class Tweet extends Model
         $tweet->content_url = basename($path);
         $tweet->content_extension = $content_extension;
         }
-        $tweet->user_id = Auth::user()->id;
+        if(isset(Auth::user()->id)){
+            $tweet->user_id = Auth::user()->id;
+        }
+
 
         if($tweet->save()){
             $tweets = Tweet::all()->sortByDesc('id');
