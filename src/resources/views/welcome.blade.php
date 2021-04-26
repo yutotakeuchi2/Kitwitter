@@ -34,10 +34,34 @@
                 position: relative;
             }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
+            .top-center {
+                position:fixed;
+                center: 10px;
+                top: 250px;
+            }
+
+            .button {
+                    display       : inline-block;
+                    border-radius : 39%;          /* 角丸       */
+                    font-size     : 35pt;        /* 文字サイズ */
+                    text-align    : center;      /* 文字位置   */
+                    cursor        : pointer;     /* カーソル   */
+                    padding       : 30px 49px;   /* 余白       */
+                    background    : #0000b3;     /* 背景色     */
+                    color         : rgba(255, 255, 255, 0.90);     /* 文字色     */
+                    line-height   : 5em;         /* 1行の高さ  */
+                    transition    : .3s;         /* なめらか変化 */
+                    box-shadow    : 4px 4px 5px #666666;  /* 影の設定 */
+                    border        : 2px solid #0000b3;    /* 枠の指定 */
+            }
+            .button:hover {
+                    box-shadow    : none;        /* カーソル時の影消去 */
+                    color         : #0000b3;     /* 背景色     */
+                    background    : rgba(255, 255, 255, 0.90);     /* 文字色     */
+            }
+
+            .btn-primary{
+                margin-right:30px;
             }
 
             .content {
@@ -67,14 +91,13 @@
     <body>
         <div class="links flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-center btn-primary links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
+                        <a href="{{ route('login') }}" class="button">Login</a>
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" class="button">Register</a>
                         @endif
                     @endauth
                 </div>
