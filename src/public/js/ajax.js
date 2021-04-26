@@ -8,13 +8,15 @@ console.log("読み込みました");
 
 $(document).on('click', '.tweet-button',function () { //そもそもボタンを押してもここから先が読み込めません
   console.log("クリックしました");
+
+
   $('.tweet-textarea').empty(); //もともとある要素を空にする
   console.log("空にしました");
   console.log($('.tweet-textarea').val());
   //let userName = $('#search_name').val(); //検索ワードを取得
 
   $.ajax({
-    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content') },
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
     type: 'post',
     url: '/tweet/store', //後述するweb.phpのURLと同じ形にする
     data: {
