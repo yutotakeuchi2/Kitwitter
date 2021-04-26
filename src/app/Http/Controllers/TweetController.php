@@ -8,8 +8,9 @@ use App\TweetGet;
 
 class TweetController extends Controller
 {
-    public function store(Request $tweet){
-        $data = Tweet::addTweet($tweet);//本来はコントローラーで保存する要素の制限をする→データの抽出
+    public function store(Request $formData){
+        $data = Tweet::addTweet($formData);//本来はコントローラーで保存する要素の制限をする→データの抽出
+        //$data2 = $data.sentence;
         return response()->json($data);
         //return view("/index",compact("data"));
 

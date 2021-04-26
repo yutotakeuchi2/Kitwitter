@@ -10,16 +10,16 @@ use Auth;
 class Tweet extends Model
 {
 
-    public static function addTweet($tweet_text){
-        Log::info($tweet_text);
-//return $tweet_text;
+    public static function addTweet($formData){
+        Log::info($formData);
+//return $formData;
 
         $tweet = new Tweet();
         //$tweet->text = strval($tweet_text->sentence);
-        $tweet->text = strval($tweet_text->tweet);
-        if(isset($tweet_text->image)){
-        $path = $tweet_text->file('image')->store('public/tweetimage');
-        $content_extension = $tweet_text->file("image")->getClientOriginalExtension();
+        $tweet->text = strval($formData.sentence);
+        if(null !== $formData.image){
+        $path = $formData->file('image')->store('public/tweetimage');
+        $content_extension = $formData->file("image")->getClientOriginalExtension();
         $tweet->content_url = basename($path);
         $tweet->content_extension = $content_extension;
         }
@@ -29,7 +29,7 @@ class Tweet extends Model
 
 
         if($tweet->save()){
-            $tweets = Tweet::where("text", $tweet_text->tweet)->get();
+            $tweets = Tweet::where("text", $formData.sentence)->get();
             //return $tweets;
             return response()->json($tweets);
         }
