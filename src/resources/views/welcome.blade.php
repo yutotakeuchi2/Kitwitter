@@ -34,34 +34,10 @@
                 position: relative;
             }
 
-            .top-center {
-                position:fixed;
-                center: 10px;
-                top: 250px;
-            }
-
-            .button {
-                    display       : inline-block;
-                    border-radius : 39%;          /* 角丸       */
-                    font-size     : 35pt;        /* 文字サイズ */
-                    text-align    : center;      /* 文字位置   */
-                    cursor        : pointer;     /* カーソル   */
-                    padding       : 30px 49px;   /* 余白       */
-                    background    : #0000b3;     /* 背景色     */
-                    color         : rgba(255, 255, 255, 0.90);     /* 文字色     */
-                    line-height   : 5em;         /* 1行の高さ  */
-                    transition    : .3s;         /* なめらか変化 */
-                    box-shadow    : 4px 4px 5px #666666;  /* 影の設定 */
-                    border        : 2px solid #0000b3;    /* 枠の指定 */
-            }
-            .button:hover {
-                    box-shadow    : none;        /* カーソル時の影消去 */
-                    color         : #0000b3;     /* 背景色     */
-                    background    : rgba(255, 255, 255, 0.90);     /* 文字色     */
-            }
-
-            .btn-primary{
-                margin-right:30px;
+            .top-right {
+                position: relative;
+                right:-250px;
+                top: 150px;
             }
 
             .content {
@@ -76,11 +52,28 @@
             .links > a {
                 color: #fff;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 30px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+
+            .btn--orange,
+            a.btn--orange {
+            color: #fff;
+            background-color: #eb6100;
+            margin:100px 60px;
+            padding:35px 60px;
+            }
+            .btn--orange:hover,
+            a.btn--orange:hover {
+            color: #fff;
+            background: #f56500;
+            }
+
+            a.btn--radius {
+            border-radius: 100vh;
             }
 
             .m-b-md {
@@ -90,23 +83,24 @@
     </head>
     <body>
         <div class="links flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-center btn-primary links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="button">Login</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="button">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                             Kitwitter
                 </div>
+
+                @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/index') }}" >Home</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn--orange btn--radius">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn btn--orange btn--radius">Register</a>
+                        @endif
+                    @endauth
+                </div>
+                @endif
 
                 {{--<div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
