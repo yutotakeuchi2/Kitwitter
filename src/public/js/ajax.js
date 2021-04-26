@@ -8,7 +8,7 @@ console.log("読み込みました");
 
 $(document).on('click', '.tweet-button',function () { //そもそもボタンを押してもここから先が読み込めません
   console.log("クリックしました");
-
+  var fomData = new FormData($('imgForm').get(0));
 
   $('.tweet-textarea').empty(); //もともとある要素を空にする
   console.log("空にしました");
