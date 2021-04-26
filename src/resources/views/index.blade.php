@@ -35,9 +35,9 @@
                         <p>{{$d->text}}</p>
                         @if(isset($d->content_url))
                         @if ($d->content_extension == "jpg" || $d->content_extension == "png")
-                            <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
+                              <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
                         @else
-                            <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" autoplay muted></video>
+                              <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" autoplay muted></video>
                         @endif
                         @endif
                         <a href="/destroy/{{$d->id}}">削除</a>
