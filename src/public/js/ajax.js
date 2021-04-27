@@ -38,20 +38,26 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
 
     if (!extension) {
       html = `
+      <div class="tweet-line">
       <p>${text}</p>
       <a href="/destroy/${data.original[0].id}">削除</a>
+      </div>
       `
     } else if(extension == "jpg" || extension == "png") {
       html = `
+      <div class="tweet-line">
       <p>${text}</p>
       <img src="../storage/tweetimage/${data.original[0].content_url}" class="image-size">
       <a href="/destroy/${data.original[0].id}">削除</a>
+      </div>
       `
     } else {
       html = `
+      <div class="tweet-line">
       <p>${text}</p>
       <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted class="image-size">
       <a href="/destroy/${data.original[0].id}">削除</a>
+      </div>
       `
     }
     //})
