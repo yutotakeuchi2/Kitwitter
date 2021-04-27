@@ -33,6 +33,7 @@
                   <div class="card-body" id="time-line2"></div>
                   <div class="card-body" id="time-line">
                         @foreach($data as $d)
+                        <div class="tweet-line">
                         <p>{{$d->text}}</p>
                         @if(isset($d->content_url))
                         @if ($d->content_extension == "jpg" || $d->content_extension == "png")
@@ -41,7 +42,8 @@
                               <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" autoplay muted class="image-size"></video>
                         @endif
                         @endif
-                        <a href="/destroy/{{$d->id}}">削除</a>
+                        <p class="delete"><a href="/destroy/{{$d->id}}">削除</a></p>
+                        </div>
                         @endforeach
                   </div>
                   </div>
