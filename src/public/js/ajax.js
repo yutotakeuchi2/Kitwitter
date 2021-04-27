@@ -14,7 +14,8 @@ $(document).on('click', '.tweet-button', function () {
 $(document).on('click', '.tweet-button',function () { //そもそもボタンを押してもここから先が読み込めません
   console.log("クリックしました");
   let formData = new FormData($(".tweet-form").get(0));
-  $('.tweet-textarea').empty(); //もともとある要素を空にする
+  $('.tweet-textarea').val(""); //もともとある要素を空にする
+  $('tweet-image').val("");
   //let tweet = $(".tweet-textarea").val();
   console.log("空にしました");
   //console.log(tweet);
@@ -43,13 +44,13 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
     } else if(extension == "jpg" || extension == "png") {
       html = `
       <p>${text}</p>
-      <img src="../storage/tweetimage/${data.original[0].content_url}">
+      <img src="../storage/tweetimage/${data.original[0].content_url}" class="image-size">
       <a href="/destroy/${data.original[0].id}">削除</a>
       `
     } else {
       html = `
       <p>${text}</p>
-      <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted>
+      <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted class="image-size">
       <a href="/destroy/${data.original[0].id}">削除</a>
       `
     }
