@@ -55,7 +55,7 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
       `
     }
     //})
-    $('#time-line2').append(html); //できあがったテンプレートをビューに追加
+    $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
     //$('#time-line').first().append(text);
     console.log("appendしたよ");
     // 検索結果がなかったときの処理

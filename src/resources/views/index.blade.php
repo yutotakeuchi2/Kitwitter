@@ -30,7 +30,6 @@
 
                   <div class="card">
                   <div class="card-header">タイムライン</div>
-                  <div class="card-body" id="time-line2"></div>
                   <div class="card-body" id="time-line">
                         @foreach($data as $d)
                         <div class="tweet-line">
