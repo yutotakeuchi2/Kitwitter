@@ -29,18 +29,24 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
     contentType: false,
   }).done(function (data) { //ajaxが成功したときの処理
     console.log("成功しました");
-    console.log(data);
-    //let text = data.original[0].text;
+    console.log(data.original[0]);
+    let text = data.original[0].text;
+    let extension = data.original[0].content_extension;
     let html = '';
     //$.each(data, function (index, value) { //dataの中身からvalueを取り出す
 
-      // １ユーザー情報のビューテンプレートを作成
-    html = `
-
+    if (!extension) {
+      html = `
       <p>${text}</p>
       <a href="/destroy/${data.original[0].id}">削除</a>
       `
-
+    } else {
+      html = `
+      <p>${text}</p>
+      <img src="../storage/tweetimage/${data.original[0].content_url}">
+      <a href="/destroy/${data.original[0].id}">削除</a>
+      `
+    }
     //})
     $('#time-line2').last().append(html); //できあがったテンプレートをビューに追加
     //$('#time-line').first().append(text);
