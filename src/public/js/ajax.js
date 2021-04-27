@@ -40,15 +40,21 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
       <p>${text}</p>
       <a href="/destroy/${data.original[0].id}">削除</a>
       `
-    } else {
+    } else if(extension == "jpg" || extension == "png") {
       html = `
       <p>${text}</p>
       <img src="../storage/tweetimage/${data.original[0].content_url}">
       <a href="/destroy/${data.original[0].id}">削除</a>
       `
+    } else {
+      html = `
+      <p>${text}</p>
+      <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted>
+      <a href="/destroy/${data.original[0].id}">削除</a>
+      `
     }
     //})
-    $('#time-line2').last().append(html); //できあがったテンプレートをビューに追加
+    $('#time-line2').append(html); //できあがったテンプレートをビューに追加
     //$('#time-line').first().append(text);
     console.log("appendしたよ");
     // 検索結果がなかったときの処理
