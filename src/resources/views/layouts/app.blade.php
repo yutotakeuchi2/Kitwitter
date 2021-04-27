@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tweet.css') }}" rel="stylesheet">
 </head>
 <body>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
