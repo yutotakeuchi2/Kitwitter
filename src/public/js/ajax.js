@@ -15,7 +15,7 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
   console.log("クリックしました");
   let formData = new FormData($(".tweet-form").get(0));
   $('.tweet-textarea').val(""); //もともとある要素を空にする
-  $('tweet-image').val("");
+  $('.tweet-image').val(null);
   //let tweet = $(".tweet-textarea").val();
   console.log("空にしました");
   //console.log(tweet);
