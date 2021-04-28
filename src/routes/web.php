@@ -18,11 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('/tweet/store', 'TweetController@store');
 //Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/tweet/add', 'TweetController@add');
-Route::get('/index','HomeController@index');
+//Route::get('/tweet/add', 'TweetController@add');
+Route::get('/index','TweetController@index');
 
-Route::get('/index','TweetGetController@tweetGet');
+//Route::get('/index','TweetGetController@index');
 Route::get('/destroy/{id}', 'TweetController@destroy');
+
 Route::group(['middleware' => 'auth:user'], function()
 {
     Route::get('users/index', 'UsersController@index');

@@ -18,16 +18,12 @@ class TweetController extends Controller
         //return view("/test",compact("tweet_text"));
     }
 
-    public function add(){
-        return view("tweet/add");
-    }
-
     public function destroy($tweet_id){
         $data = Tweet::destroyTweet($tweet_id);
         return view("/index", compact("data"));
     }
 
-    public function tweetGet()
+    public function index()
     {
         $tweets = new Tweet();
 

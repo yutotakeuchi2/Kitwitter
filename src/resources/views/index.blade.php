@@ -22,8 +22,8 @@
                         <h1>Tweet</h1>
                         <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweetForm">
                               {{ csrf_field() }}
-                              <textarea name="sentence" type="text" class="tweet-textarea" cols="20"></textarea>
-                              <input type="file" accept="image/*,video/*" class="tweet-image" name="image">
+                              <textarea name="sentence" type="text" class="tweet-textarea" id="tweet-textarea" cols="20"></textarea>
+                              <input type="file" accept="image/*,video/*" class="tweet-image" id="tweet-image" name="image">
                               <input type="button" class="tweet-button" id="tweetButton" value="ツイートする">
                         </form>
                   </div>
