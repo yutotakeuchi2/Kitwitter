@@ -55,10 +55,6 @@ function sendTweet(formData) {
     }
     $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
     console.log("appendしたよ");
-    // 検索結果がなかったときの処理
-    if (data.length === 0) {
-      $('.user-index-wrapper').after('<p class="text-center mt-5 search-null">ユーザーが見つかりません</p>');
-    }
 
   }).fail(function () {
     //ajax通信がエラーのときの処理
