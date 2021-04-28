@@ -31,9 +31,7 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
   }).done(function (data) { //ajaxが成功したときの処理
     console.log("成功しました");
     console.log(data.original[0]);
-    if (data.original[0].text) {
-      let text = data.original[0].text;
-    }
+    let text = data.original[0].text;
     let extension = data.original[0].content_extension;
     let html = '';
     //$.each(data, function (index, value) { //dataの中身からvalueを取り出す
@@ -42,15 +40,7 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
       html = `
       <div class="tweet-line">
       <p>${text}</p>
-      <a href="/destroy/${data.original[0].id}">削除</a>
-      </div>
-      `
-    } else if (extension && !text) {
-      html = `
-      <div class="tweet-line">
-      <p></p>
-      <img src="../storage/tweetimage/${data.original[0].content_url}" class="image-size">
-      <a href="/destroy/${data.original[0].id}">削除</a>
+      <p class="delete"><a href="/destroy/${data.original[0].id}">削除</a></p>
       </div>
       `
     } else if (extension == "jpg" || extension == "png") {
@@ -58,15 +48,15 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
       <div class="tweet-line">
       <p>${text}</p>
       <img src="../storage/tweetimage/${data.original[0].content_url}" class="image-size">
-      <a href="/destroy/${data.original[0].id}">削除</a>
+      <p class="delete"><a href="/destroy/${data.original[0].id}">削除</a></p>
       </div>
       `
     } else {
       html = `
       <div class="tweet-line">
       <p>${text}</p>
-      <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted class="image-size">
-      <a href="/destroy/${data.original[0].id}">削除</a>
+      <video src="../storage/tweetimage/${data.original[0].content_url}" autoplay muted class="image-size"></video>
+      <p class="delete"><a href="/destroy/${data.original[0].id}">削除</a></p>
       </div>
       `
     }
