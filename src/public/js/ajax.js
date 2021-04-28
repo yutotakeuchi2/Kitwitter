@@ -31,7 +31,9 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
   }).done(function (data) { //ajaxが成功したときの処理
     console.log("成功しました");
     console.log(data.original[0]);
-    let text = data.original[0].text;
+    if (data.original[0].text) {
+      let text = data.original[0].text;
+    }
     let extension = data.original[0].content_extension;
     let html = '';
     //$.each(data, function (index, value) { //dataの中身からvalueを取り出す
@@ -43,7 +45,15 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
       <a href="/destroy/${data.original[0].id}">削除</a>
       </div>
       `
-    } else if(extension == "jpg" || extension == "png") {
+    } else if (extension && !text) {
+      html = `
+      <div class="tweet-line">
+      <p></p>
+      <img src="../storage/tweetimage/${data.original[0].content_url}" class="image-size">
+      <a href="/destroy/${data.original[0].id}">削除</a>
+      </div>
+      `
+    } else if (extension == "jpg" || extension == "png") {
       html = `
       <div class="tweet-line">
       <p>${text}</p>
@@ -71,6 +81,7 @@ $(document).on('click', '.tweet-button',function () { //そもそもボタンを
 
   }).fail(function () {
     //ajax通信がエラーのときの処理
+    alert("ツイートに失敗しました");
     console.log('どんまい！');
   });
 });
