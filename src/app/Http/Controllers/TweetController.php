@@ -8,16 +8,14 @@ use App\TweetGet;
 
 class TweetController extends Controller
 {
-    public function store(Request $request){
-        $data = Tweet::addTweet($request);//本来はコントローラーで保存する要素の制限をする→データの抽出
-        return view("/index",compact("data"));
+    public function store(Request $formData){
+        $data = Tweet::addTweet($formData);//本来はコントローラーで保存する要素の制限をする→データの抽出
+        //$data2 = $data.sentence;
+        return response()->json($data);
+        //return view("/index",compact("data"));
 
         //$tweet_text = Tweet::addTweet($request);
         //return view("/test",compact("tweet_text"));
-    }
-
-    public function add(){
-        return view("tweet/add");
     }
 
     public function destroy($tweet_id){
@@ -25,7 +23,7 @@ class TweetController extends Controller
         return view("/index", compact("data"));
     }
 
-    public function tweetGet()
+    public function index()
     {
         $tweets = new Tweet();
 

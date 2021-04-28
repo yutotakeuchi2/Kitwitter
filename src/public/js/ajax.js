@@ -1,49 +1,69 @@
-//$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content') } });
+$(function () {
+  $('#tweetButton').on('click', function () {　//classはユニークでない　idはユニークという決まり事　domの処理はidのほうが早い→変なエラー出にくい。処理も早い
+    console.log("クリックしました");
+    let formData = new FormData($("#tweetForm").get(0));//値が少ないときはvalueで取得して値を自分で配列に入れたほうがわかりやすい、変なデータを送られない対策
+    console.log("空にしました");
+    sendTweet(formData);
 
-$("*").on('click', function () {
-  console.log("クリックされました");
-})
+  });
+});
 
-console.log("読み込みました");
-$('#tweet-form').on('click', function () { //そもそもボタンを押してもここから先が読み込めません
-  console.log("読み込みました");
-  $('.tweet-textarea').empty(); //もともとある要素を空にする
-  console.log("空にしました");
-  //let userName = $('#search_name').val(); //検索ワードを取得
-
+function sendTweet(formData) {
   $.ajax({
-    type: 'POST',
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+    type: 'post',
     url: '/tweet/store', //後述するweb.phpのURLと同じ形にする
-    data: {
-      'tweet': $('#tweet_form').val(), //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
-    },
+    data: formData, //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
     dataType: 'json', //json形式で受け取る
+    processData: false,
+    contentType: false,
   }).done(function (data) { //ajaxが成功したときの処理
-    let html = '';
-    $.each(data, function (index, value) { //dataの中身からvalueを取り出す
-      //ここの記述はリファクタ可能
-      let sentence = value.sentence;
-      let image = value.content_url;
-      let id = value.id;
-      // １ユーザー情報のビューテンプレートを作成
-      html = `
-
-                        <p>sentence</p>
-                        @if(isset(image))
-                        <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}">
-                        @endif
-                        <a href="/destroy/#{id}">削除</a>
-
-                                `
-    })
-    $('.card-body').append(html); //できあがったテンプレートをビューに追加
-    // 検索結果がなかったときの処理
-    if (data.length === 0) {
-      $('.user-index-wrapper').after('<p class="text-center mt-5 search-null">ユーザーが見つかりません</p>');
+    console.log("成功しました");
+    initForm();
+    console.log(data);
+    let text = "";
+    if (data.original.text) {//表示の参照でnull/undefindなどで問題が起きたら表示のほうで何とかする
+      text = data.original.text;
     }
+
+    let extension = data.original.content_extension;
+    let html = '';
+
+    if (!extension) { //テンプレートを利用する場合tagを生成→文字列として要素を入れるという手順を踏まないとセキュリティホールになりうる　、クロススクリプティング
+      html = `
+      <div class="tweet-line">
+      <p>${text}</p>
+      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+      </div>
+      `
+    } else if (extension == "jpg" || extension == "png") {
+      html = `
+      <div class="tweet-line">
+      <p>${text}</p>
+      <img src="../storage/tweetimage/${data.original.content_url}" class="image-size">
+      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+      </div>
+      `
+    } else {
+      html = `
+      <div class="tweet-line">
+      <p>${text}</p>
+      <video src="../storage/tweetimage/${data.original.content_url}" autoplay muted class="image-size"></video>
+      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+      </div>
+      `
+    }
+    $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
+    console.log("appendしたよ");
 
   }).fail(function () {
     //ajax通信がエラーのときの処理
+    alert("ツイートに失敗しました");
     console.log('どんまい！');
   });
-});
+}
+
+function initForm() {
+  $('#tweet-textarea').val(""); //もともとある要素を空にする
+  $('#tweet-image').val(null);
+}
