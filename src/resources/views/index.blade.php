@@ -20,11 +20,11 @@
 
                   <div class="tweet-wrapper card">
                         <h1>Tweet</h1>
-                        <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweet-form">
+                        <form method="post" action="/tweet/store" class="tweet-form" enctype="multipart/form-data" id="tweetForm">
                               {{ csrf_field() }}
                               <textarea name="sentence" type="text" class="tweet-textarea" cols="20"></textarea>
                               <input type="file" accept="image/*,video/*" class="tweet-image" name="image">
-                              <input type="button" class="tweet-button" value="ツイートする">
+                              <input type="button" class="tweet-button" id="tweetButton" value="ツイートする">
                         </form>
                   </div>
 

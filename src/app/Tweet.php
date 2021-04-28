@@ -16,9 +16,9 @@ class Tweet extends Model
 
         $tweet = new Tweet();
         //$tweet->text = strval($tweet_text->sentence);
-        if ($formData->sentence === null){
-            $formData->sentence = " ";
-        }
+        //if ($formData->sentence === null){
+       //     $formData->sentence = " ";　これはやばい
+        //}
         $tweet->text = strval($formData->sentence);
         if(null !== $formData->image){
         $path = $formData->file('image')->store('public/tweetimage');
@@ -32,9 +32,9 @@ class Tweet extends Model
 
 
         if($tweet->save()){
-            $tweets = Tweet::where("text", $formData->sentence)->orderBy("id", "desc")->get();
+            $tweets = Tweet::find($tweet->id)->get();
             //return $tweets;
-            return response()->json($tweets);
+            return response()->json($tweet);
         }
 
     }
