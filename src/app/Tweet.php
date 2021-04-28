@@ -19,7 +19,7 @@ class Tweet extends Model
         //if ($formData->sentence === null){
        //     $formData->sentence = " ";　これはやばい
         //}
-        $tweet->text = strval($formData->sentence);
+        $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
         $path = $formData->file('image')->store('public/tweetimage');
         $content_extension = $formData->file("image")->getClientOriginalExtension();
