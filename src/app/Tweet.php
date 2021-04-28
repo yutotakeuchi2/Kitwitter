@@ -10,7 +10,7 @@ use Auth;
 class Tweet extends Model
 {
 
-    public static function addTweet($formData){
+    public static function addTweet($text, $path, $content_extension){
         Log::info($formData);
 //return $formData;
 
