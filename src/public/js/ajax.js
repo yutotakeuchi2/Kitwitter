@@ -29,36 +29,21 @@ function sendTweet(formData) {
     }
 
     let extension = data.original.content_extension;
-    let html = '';
-
-
-    if (!extension) { //テンプレートを利用する場合tagを生成→文字列として要素を入れるという手順を踏まないとセキュリティホールになりうる　、クロススクリプティング
-      html = `
+    let html = `
       <div class="tweet-line">
       <p class="username-font">User : ${name}</p>
       <p>${text}</p>
-      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
-      </div>
-      `
-    } else if (extension == "jpg" || extension == "png") {
-      html = `
-      <div class="tweet-line">
-      <p class="username-font">User : ${name}</p>
-      <p>${text}</p>
-      <img src="../storage/tweetimage/${data.original.content_url}" class="image-size">
-      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
-      </div>
-      `
-    } else {
-      html = `
-      <div class="tweet-line">
-      <p class="username-font">User : ${name}</p>
-      <p>${text}</p>
-      <video src="../storage/tweetimage/${data.original.content_url}" autoplay muted class="image-size"></video>
-      <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
-      </div>
-      `
+      `;
+    if (extension == "image") {
+      html += `<img src="../storage/tweetimage/${data.original.content_url}" class="image-size"></img>`;
+    } else if (extension == "video") {
+      html += `<video src="../storage/tweetimage/${data.original.content_url}" controls class="image-size"></video>`
     }
+
+    html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+              </div>
+    `
+
     $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
     console.log("appendしたよ");
 

@@ -22,9 +22,10 @@ class Tweet extends Model
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
         $path = $formData->file('image')->store('public/tweetimage');
-        $content_extension = $formData->file("image")->getClientOriginalExtension();
+        //$content_extension = $formData->file("image")->getClientOriginalExtension();
         $tweet->content_url = basename($path);
-        $tweet->content_extension = $content_extension;
+        $content_types = explode("/", mime_content_type("$formData->image"));
+        $tweet->content_extension = $content_types[0];
         }
         if(isset(Auth::user()->id)){
             $tweet->user_id = Auth::user()->id;
@@ -61,7 +62,7 @@ class Tweet extends Model
 
         //$timestamps = false;
 
-            $data = Tweet::all();
+            $data = Tweet::all()->sortByDesc('id');
             return $data;
 
 }
