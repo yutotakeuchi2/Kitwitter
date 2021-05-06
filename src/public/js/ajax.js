@@ -67,6 +67,7 @@ function sendTweet(formData) {
   });
 }
 
+
 function initForm() {
   $('#tweet-textarea').val(""); //もともとある要素を空にする
   $('#tweet-image').val(null);
