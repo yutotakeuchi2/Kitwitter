@@ -52,7 +52,7 @@ function sendTweet(formData) {
     } else {
       html = `
       <div class="tweet-line">
-      <p class-"username-font">User : ${name}</p>
+      <p class="username-font">User : ${name}</p>
       <p>${text}</p>
       <video src="../storage/tweetimage/${data.original.content_url}" autoplay muted class="image-size"></video>
       <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>

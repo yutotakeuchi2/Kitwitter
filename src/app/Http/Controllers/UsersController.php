@@ -13,19 +13,21 @@ class UsersController extends Controller
     //userデータの取得
     public function index() {
 
-        return view('users.index', ['user' => User::user() ]);
+        return view('users.index', ['user' => Auth::user() ]);
     }
     //userデータの編集
     public function edit() {
         return view('users.edit', ['user' => Auth::user() ]);
 
-        return view('users.index', ['user' => User::user() ]);
+        //return view('users.index', ['user' => User::user() ]);
     }
-    //userデータの編集
-    public function edit() {
-        return view('users.edit', ['user' => User::user() ]);
 
-    }
+    //userデータの編集
+    //public function edit() {
+        //return view('users.edit', ['user' => User::user() ]);
+
+    //}
+
     //userデータの保存
     public function update(Request $request) {
 
