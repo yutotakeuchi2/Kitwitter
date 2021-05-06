@@ -43,16 +43,9 @@ class Tweet extends Model
         Tweet::destroy($tweet_id);
         return Tweet::all()->sortByDesc('id');
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e85be90f75444a34db191953594e1c09ae2be779
-=======
->>>>>>> 0e67431 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
 
     public static function getTweet(){
         $table ='tweets';
@@ -63,14 +56,6 @@ class Tweet extends Model
 
             $data = Tweet::all();
             return $data;
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> ebadce3 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
-=======
->>>>>>> e85be90f75444a34db191953594e1c09ae2be779
-=======
->>>>>>> 0e67431 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
 }
 
 }
