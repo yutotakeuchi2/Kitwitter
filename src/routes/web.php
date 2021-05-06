@@ -31,3 +31,4 @@ Route::group(['middleware' => 'auth:user'], function()
     Route::post('users/edit', 'UsersController@update');
 });
 
+

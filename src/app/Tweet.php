@@ -47,15 +47,28 @@ class Tweet extends Model
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
 
+    protected $table ='tweets';
+
+    //protected $guarded = array('id');
+
+    public $timestamps = true;
+
     public static function getTweet(){
-        $table ='tweets';
+        //$table ='tweets';
 
-        $guarded = array('id');
+       // $guarded = array('id');
 
-        $timestamps = false;
+        //$timestamps = false;
 
             $data = Tweet::all();
             return $data;
+
+}
+
+protected $fillable = ['text'];
+
+public function user() {
+    return $this->belongsTo('App\User');
 }
 
 }

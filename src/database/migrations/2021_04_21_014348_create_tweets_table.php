@@ -17,8 +17,13 @@ class CreateTweetsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string("text", 120)->nullable();
-            $table->integer("user_id");
+            $table->bigInteger("user_id");
             $table->string("content_url", 1000)->nullable();
+           // $table->foreign('user_id')
+            //        ->references('id')
+            //        ->on('users')
+            //        ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -30,6 +35,11 @@ class CreateTweetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweets');
-    }
+        Schema::table('tweets', function (Blueprint $table) {
+            Schema::dropIfExists('tweets');
+           // $table->dropColumn('user_id');
+
+        });
+
+}
 }
