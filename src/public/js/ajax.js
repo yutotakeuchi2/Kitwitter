@@ -8,6 +8,7 @@ $(function () {
   });
 });
 
+
 function sendTweet(formData) {
   $.ajax({
     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -29,6 +30,7 @@ function sendTweet(formData) {
 
     let extension = data.original.content_extension;
     let html = '';
+
 
     if (!extension) { //テンプレートを利用する場合tagを生成→文字列として要素を入れるという手順を踏まないとセキュリティホールになりうる　、クロススクリプティング
       html = `
