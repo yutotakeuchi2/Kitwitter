@@ -15,21 +15,15 @@ class CreateTweetsTable extends Migration
     {
         Schema::create('tweets', function (Blueprint $table) {
             $table->bigIncrements('id');
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             $table->string("text", 120)->nullable();
-            $table->integer("user_id");
+            $table->bigInteger("user_id");
             $table->string("content_url", 1000)->nullable();
-=======
-            $table->string("text");
-            $table->integer("user_id");
-            $table->string("content_url");
->>>>>>> 4bef672 (tweetのテーブル、モデル、コントローラーと最低限の処理を追加)
-=======
-            $table->string("text", 120)->nullable();
-            $table->integer("user_id");
-            $table->string("content_url", 1000)->nullable();
->>>>>>> 922e604 (ツイート機能の実装)
+           // $table->foreign('user_id')
+            //        ->references('id')
+            //        ->on('users')
+            //        ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -41,6 +35,11 @@ class CreateTweetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tweets');
-    }
+        Schema::table('tweets', function (Blueprint $table) {
+            Schema::dropIfExists('tweets');
+           // $table->dropColumn('user_id');
+
+        });
+
+}
 }

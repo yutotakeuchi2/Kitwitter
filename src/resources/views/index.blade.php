@@ -33,6 +33,7 @@
                   <div class="card-body" id="time-line">
                         @foreach($data as $d)
                         <div class="tweet-line">
+                        <p>{{$d->user->name}}</p>
                         <p>{{$d->text}}</p>
                         @if(isset($d->content_url))
                         @if ($d->content_extension == "jpg" || $d->content_extension == "png")
