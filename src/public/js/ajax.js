@@ -35,7 +35,7 @@ function sendTweet(formData) {
     if (!extension) { //テンプレートを利用する場合tagを生成→文字列として要素を入れるという手順を踏まないとセキュリティホールになりうる　、クロススクリプティング
       html = `
       <div class="tweet-line">
-      <p>${name}</p>
+      <p class="username-font">User : ${name}</p>
       <p>${text}</p>
       <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
       </div>
@@ -43,7 +43,7 @@ function sendTweet(formData) {
     } else if (extension == "jpg" || extension == "png") {
       html = `
       <div class="tweet-line">
-      <p>${name}</p>
+      <p class="username-font">User : ${name}</p>
       <p>${text}</p>
       <img src="../storage/tweetimage/${data.original.content_url}" class="image-size">
       <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
@@ -52,7 +52,7 @@ function sendTweet(formData) {
     } else {
       html = `
       <div class="tweet-line">
-      <p>${name}</p>
+      <p class-"username-font">User : ${name}</p>
       <p>${text}</p>
       <video src="../storage/tweetimage/${data.original.content_url}" autoplay muted class="image-size"></video>
       <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
