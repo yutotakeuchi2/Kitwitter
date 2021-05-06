@@ -24,11 +24,11 @@ Route::get('/index','TweetController@index');
 //Route::get('/index','TweetGetController@index');
 Route::get('/destroy/{id}', 'TweetController@destroy');
 
-Route::group(['middleware' => 'auth:user'], function()
-{
+//Route::group(['prefix' => 'users'], function()
+//{
     Route::get('users/index', 'UsersController@index');
     Route::get('users/edit', 'UsersController@edit');
     Route::post('users/edit', 'UsersController@update');
-});
+//});
 
 
