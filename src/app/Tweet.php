@@ -32,9 +32,10 @@ class Tweet extends Model
 
 
         if($tweet->save()){
-            $tweets = Tweet::find($tweet->id)->get();
+            //$tweets = Tweet::find($tweet->id)->get();
             //return $tweets;
-            return response()->json($tweet);
+            $return_tweet = Tweet::with('user')->orderBy("id", "desc")->first();
+            return response()->json($return_tweet);
         }
 
     }
