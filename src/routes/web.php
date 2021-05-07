@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::post('/tweet/store', 'TweetController@store');
-//Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/home', 'HomeController@home')->name('home');
 //Route::get('/tweet/add', 'TweetController@add');
 Route::get('/index','TweetController@index');
 
@@ -27,7 +27,7 @@ Route::get('/destroy/{id}', 'TweetController@destroy');
 //Route::group(['prefix' => 'users'], function()
 //{
     Route::get('users/index', 'UsersController@index');
-    Route::get('users/edit', 'UsersController@edit');
+    Route::get('users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('users/edit', 'UsersController@update');
 //});
 
