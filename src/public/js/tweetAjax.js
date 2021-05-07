@@ -37,7 +37,7 @@ function sendTweet(formData) {
     if (extension == "image") {
       html += `<img src="../storage/tweetimage/${data.original.content_url}" class="image-size"></img>`;
     } else if (extension == "video") {
-      html += `<video src="../storage/tweetimage/${data.original.content_url}" controls class="image-size"></video>`
+      html += `<video src="../storage/tweetimage/${data.original.content_url}" controls playsinline controlsList="nodownload" class="image-size"></video>`
     }
 
     html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
