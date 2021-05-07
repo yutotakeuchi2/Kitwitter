@@ -22,9 +22,10 @@ class Tweet extends Model
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
         $path = $formData->file('image')->store('public/tweetimage');
-        $content_extension = $formData->file("image")->getClientOriginalExtension();
+        //$content_extension = $formData->file("image")->getClientOriginalExtension();
         $tweet->content_url = basename($path);
-        $tweet->content_extension = $content_extension;
+        $content_types = explode("/", mime_content_type("$formData->image"));
+        $tweet->content_extension = $content_types[0];
         }
         if(isset(Auth::user()->id)){
             $tweet->user_id = Auth::user()->id;
@@ -32,9 +33,10 @@ class Tweet extends Model
 
 
         if($tweet->save()){
-            $tweets = Tweet::find($tweet->id)->get();
+            //$tweets = Tweet::find($tweet->id)->get();
             //return $tweets;
-            return response()->json($tweet);
+            $return_tweet = Tweet::with('user')->orderBy("id", "desc")->first();
+            return response()->json($return_tweet);
         }
 
     }
@@ -43,34 +45,32 @@ class Tweet extends Model
         Tweet::destroy($tweet_id);
         return Tweet::all()->sortByDesc('id');
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
     protected $guarded = ['text', 'content_url'];
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e85be90f75444a34db191953594e1c09ae2be779
-=======
->>>>>>> 0e67431 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
+
+    protected $table ='tweets';
+
+    //protected $guarded = array('id');
+
+    public $timestamps = true;
 
     public static function getTweet(){
-        $table ='tweets';
+        //$table ='tweets';
 
-        $guarded = array('id');
+       // $guarded = array('id');
 
-        $timestamps = false;
+        //$timestamps = false;
 
-            $data = Tweet::all();
+            $data = Tweet::all()->sortByDesc('id');
             return $data;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> ebadce3 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
-=======
->>>>>>> e85be90f75444a34db191953594e1c09ae2be779
-=======
->>>>>>> 0e67431 (tweetとtweetconの修正・tweetGet+tweetGet.conは不使用)
+}
+
+protected $fillable = ['text'];
+
+public function user() {
+    return $this->belongsTo('App\User');
 }
 
 }

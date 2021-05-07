@@ -13,7 +13,7 @@
                 名前
               </label>
               <div>
-                <input class="form-control" value="{{ $user->name }}">
+                <p class="form-control">{{ $user->name }}</p>
               </div>
             </div>
             <div class="form-group">
@@ -21,7 +21,7 @@
                 email
               </label>
               <div>
-                <input class="form-control" value="{{ $user->email }}">
+                <p class="form-control">{{ $user->email }}</p>
               </div>
             </div>
               <a href="{{ action('UsersController@edit') }}"><button class="user-btn">ユーザー登録内容の編集</button></a>
