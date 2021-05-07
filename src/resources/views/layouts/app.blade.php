@@ -83,6 +83,6 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('/js/ajax.js')}}"></script>
+    <script src="{{ asset('/js/tweetAjax.js')}}"></script>
 </body>
 </html>
