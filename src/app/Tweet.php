@@ -32,11 +32,11 @@ class Tweet extends Model
         }
 
 
-        if($tweet->save()){
-            //$tweets = Tweet::find($tweet->id)->get();
-            //return $tweets;
-            $return_tweet = Tweet::with('user')->orderBy("id", "desc")->first();
-            return response()->json($return_tweet);
+        if($tweet->save()){//saveの戻り値に保存した情報が入ってるのでは？？？？？？？？？？保存→戻り値のidで再検索　関数化してしまえばツイート表示にも適用できる
+            /**$return_tweet = Tweet::with('user')->find($tweet->id);
+            return response()->json($return_tweet); **/
+            return response()->json(self::getOneTweet($tweet->id));
+
         }
 
     }
@@ -66,6 +66,11 @@ class Tweet extends Model
             return $data;
 
 }
+
+    public static function getOneTweet($id){
+        $return_tweet = Tweet::with('user')->find($id);
+        return $return_tweet;
+    }
 
 protected $fillable = ['text'];
 
