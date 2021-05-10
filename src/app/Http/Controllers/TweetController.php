@@ -32,4 +32,20 @@ class TweetController extends Controller
         return view('/index',['data' => $data ]);
     }
 
+    public function searchTweet(Request $request){
+        $keyword = $request->input('keyword');
+        //$query = Tweet::query();
+        //search_tweetのなかに入力された値を検索する
+        //$query->when($search_tweet, function($query, $search_tweet){
+            //return $query ->where('search_tweet','like','% $search_tweet %');
+        //})
+        //return $query->get();
+        $searchUserId = Search::getUsers($keyword);
+
+        $searchResults = Search::searchTweets($searchUserId,$keyword);
+
+        return view('/search',compact('search_results'));
+
+    }
+
 }
