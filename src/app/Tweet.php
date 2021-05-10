@@ -72,7 +72,7 @@ class Tweet extends Model
         return $return_tweet;
     }
 
-    public function searchTweet($userIds, $keyword){
+    public static function searchTweets($userIds, $keyword){
         $tweets = Tweet::whereIn('user_id', $userIds)->orWhere('text', $keyword)->get();
         return $tweets;
     }

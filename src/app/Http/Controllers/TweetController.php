@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tweet;
 use App\TweetGet;
+use App\User;
 
 class TweetController extends Controller
 {
@@ -44,7 +45,7 @@ class TweetController extends Controller
 
         $searchResults = Tweet::searchTweets($searchUserId,$keyword);
 
-        return view('/search',compact('searchResults'));
+        return view('tweet/search',compact('searchResults'));
 
     }
 
