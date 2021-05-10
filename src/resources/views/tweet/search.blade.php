@@ -19,7 +19,7 @@
                                     @if(isset($searchResult->content_url))
                                         @if ($searchResult->content_extension == "image")
                                             <img src="{{ asset('storage/tweetimage/' . $searchResult->content_url) }}" class="image-size">
-                                        @elseif ({$searchResult->content_extension == "video")
+                                        @elseif ($searchResult->content_extension == "video")
                                             <video src="{{ asset('storage/tweetimage/' . $searchResult->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
                                         @endif
                                     @endif
