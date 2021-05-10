@@ -76,7 +76,7 @@
                         @endguest
                         <form class="form-inline">
                             <input class="form-control mr-sm-1" type="search" name="keyword" value="">
-                            <button class="btn btn-info" type="submit">検索</button>
+                            <button class="btn btn-info" type="submit" href="{{route('search')}}">検索</button>
                         </form>
                     </ul>
                 </div>
