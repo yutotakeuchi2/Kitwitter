@@ -72,6 +72,11 @@ class Tweet extends Model
         return $return_tweet;
     }
 
+    public function searchTweet($userIds, $keyword){
+        $tweets = Tweet::whereIn('user_id', $userIds)->orWhere('text', $keyword)->get();
+        return $tweets;
+    }
+
 protected $fillable = ['text'];
 
 public function user() {
