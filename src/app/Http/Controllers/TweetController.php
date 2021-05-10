@@ -43,6 +43,8 @@ class TweetController extends Controller
         //return $query->get();
         $searchUserId = User::getUsers($keyword);
 
+        //return view('/test', compact('searchUserId'));
+
         $searchResults = Tweet::searchTweets($searchUserId,$keyword);
 
         return view('tweet/search',compact('searchResults'));
