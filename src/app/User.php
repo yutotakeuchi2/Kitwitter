@@ -43,7 +43,7 @@ class User extends Authenticatable
 
 
     public static function getUsers($user_name) {
-        $users = User::where('name', $user_name)->get();
+        $users = User::where('name', 'like', "%$user_name%")->get();
         $user_ids = [];
         foreach ($users as $user) {
             $user_ids[] = $user['id'];
