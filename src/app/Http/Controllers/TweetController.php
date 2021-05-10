@@ -44,7 +44,7 @@ class TweetController extends Controller
 
         $searchResults = Tweet::searchTweets($searchUserId,$keyword);
 
-        return view('/search',compact('search_results'));
+        return view('/search',compact('searchResults'));
 
     }
 
