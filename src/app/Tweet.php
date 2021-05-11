@@ -62,7 +62,7 @@ class Tweet extends Model
 
         //$timestamps = false;
 
-            $data = Tweet::all()->sortByDesc('id');
+            $data = Tweet::all()->sortByDesc('created_at');
             return $data;
 
 }
@@ -72,9 +72,15 @@ class Tweet extends Model
         return $return_tweet;
     }
 
+    public static function searchTweets($userIds, $keyword){
+        $tweets = Tweet::whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
+        return $tweets;
+    }
+
 protected $fillable = ['text'];
 
 public function user() {
+
     return $this->belongsTo('App\User');
 }
 

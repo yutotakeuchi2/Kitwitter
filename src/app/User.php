@@ -42,4 +42,11 @@ class User extends Authenticatable
     ];
 
 
+    public static function getUserIds($user_name) {
+        $user_ids = User::where('name', 'like', "%$user_name%")->get()->pluck("id");
+
+        return $user_ids;
+    }
+
+
 }

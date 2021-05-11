@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tweet;
 use App\TweetGet;
+use App\User;
 
 class TweetController extends Controller
 {
@@ -30,6 +31,29 @@ class TweetController extends Controller
         $data = $tweets->getTweet();
 
         return view('/index',['data' => $data ]);
+    }
+
+    public function read(Request $request){
+
+        $validateData = $request->validate([
+            'keyword' => 'required',
+        ]);
+
+        $keyword = $request->input('keyword');
+        //$query = Tweet::query();
+        //search_tweetのなかに入力された値を検索する
+        //$query->when($search_tweet, function($query, $search_tweet){
+            //return $query ->where('search_tweet','like','% $search_tweet %');
+        //})
+        //return $query->get();
+        $searchUserId = User::getUserIds($keyword);
+
+        //return view('/test', compact('searchUserId'));
+
+        $searchResults = Tweet::searchTweets($searchUserId,$keyword);
+
+        return view('tweet/search',compact('searchResults'));
+
     }
 
 }
