@@ -74,9 +74,9 @@
                                 </div>
                             </li>
                         @endguest
-                        <form class="form-inline" action="/search">
-                            <input class="form-control mr-sm-1" type="search" name="keyword" value="">
-                            <button class="btn btn-info" type="submit" >検索</button>
+                        <form class="form-inline" action="/search" id="searchForm">
+                            <input class="form-control mr-sm-1" id="searchValue" type="search" name="keyword" value="">
+                            <button class="btn btn-info" type="submit" id="searchButton">検索</button>
                         </form>
                     </ul>
                 </div>
@@ -88,5 +88,6 @@
         </main>
     </div>
     <script src="{{ asset('/js/tweetAjax.js')}}"></script>
+    <script src="{{ asset('/js/validateSearch.js')}}"></script>
 </body>
 </html>
