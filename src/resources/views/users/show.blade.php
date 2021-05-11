@@ -5,8 +5,6 @@
 
 <div class="search-wrapper">
 
-    <h1>検索結果</h1>
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8" >
@@ -15,9 +13,9 @@
                         <div class="card-body" id="user-profile">
                           <h3>{{$user_data->name}}</h3>
                         </div>
+                        <div class="card-header">Tweets</div>
                         <div class="card-body" id="time-line">
-                          <h4>Tweet一覧</h4>
-                          @foreach ($user_data->tweets as $tweet)
+                          @foreach ($user_data->tweets()->orderBy('created_at','desc')->get() as $tweet)
                           <div class="tweet-line">
                             <p class="username-font">User : {{$user_data->name}}</p>
                               <p>{{$tweet->text}}</p>
