@@ -33,7 +33,7 @@ class TweetController extends Controller
         return view('/index',['data' => $data ]);
     }
 
-    public function searchTweet(Request $request){
+    public function search(Request $request){
 
         $validateData = $request->validate([
             'keyword' => 'required',
@@ -46,7 +46,7 @@ class TweetController extends Controller
             //return $query ->where('search_tweet','like','% $search_tweet %');
         //})
         //return $query->get();
-        $searchUserId = User::getUsers($keyword);
+        $searchUserId = User::getUserIds($keyword);
 
         //return view('/test', compact('searchUserId'));
 
