@@ -48,5 +48,10 @@ class User extends Authenticatable
         return $user_ids;
     }
 
+    public static function getUserData($user_id){
+        $user_data = User::with('tweets')->find($user_id);
+        return $user_data;
+    }
+
 
 }
