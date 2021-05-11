@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -34,5 +35,10 @@ class UsersController extends Controller
         $user->fill($user_form)->save();
         //リダイレクト
         return redirect('/index');
+    }
+
+    public function show($id){
+        $user_data = User::getUserData($id);
+        return view('users/show',compact('user_data'));
     }
 }
