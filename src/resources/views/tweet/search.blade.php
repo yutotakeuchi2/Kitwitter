@@ -14,7 +14,7 @@
                     <div class="card-header">タイムライン</div>
                         <div class="card-body" id="time-line">
                             @if($searchResults->isEmpty())
-                            <p>検索ワードが見つかりません</p>
+                            <p>検索結果がありません</p>
                             @else
                                 @foreach($searchResults as $searchResult)
                                     <div class="tweet-line">

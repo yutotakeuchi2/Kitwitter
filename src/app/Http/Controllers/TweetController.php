@@ -46,7 +46,7 @@ class TweetController extends Controller
             //return $query ->where('search_tweet','like','% $search_tweet %');
         //})
         //return $query->get();
-        $searchUserId = User::getUsers($keyword);
+        $searchUserId = User::getUserIds($keyword);
 
         //return view('/test', compact('searchUserId'));
 
