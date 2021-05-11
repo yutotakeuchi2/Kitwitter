@@ -34,6 +34,11 @@ class TweetController extends Controller
     }
 
     public function searchTweet(Request $request){
+
+        $validateData = $request->validate([
+            'keyword' => 'required',
+        ]);
+
         $keyword = $request->input('keyword');
         //$query = Tweet::query();
         //search_tweetのなかに入力された値を検索する
