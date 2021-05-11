@@ -33,7 +33,7 @@ class TweetController extends Controller
         return view('/index',['data' => $data ]);
     }
 
-    public function search(Request $request){
+    public function read(Request $request){
 
         $validateData = $request->validate([
             'keyword' => 'required',
