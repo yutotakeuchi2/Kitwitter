@@ -5,7 +5,7 @@
 
 <div class="search-wrapper">
 
-    <h1 align="center">検索結果</h1>
+    <h1>検索結果</h1>
 
     <div class="container">
         <div class="row justify-content-center">
