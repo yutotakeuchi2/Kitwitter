@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tweet.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/search.css') }}" rel="stylesheet">
 </head>
 <body>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
@@ -43,6 +44,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <form class="form-inline box" action="/search" id="searchForm">
+                            <input class="form-control mr-sm-1" id="searchValue" type="search" name="keyword" placeholder="検索ワードを入力">
+                            <button class="btn btn-info" type="submit" id="searchButton" style="display:none;">検索</button>
+                        </form>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -58,7 +63,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right ml-3" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{route('users.edit')}}">ユーザー情報変更</a>
 
@@ -74,10 +79,7 @@
                                 </div>
                             </li>
                         @endguest
-                        <form class="form-inline" action="/search" id="searchForm">
-                            <input class="form-control mr-sm-1" id="searchValue" type="search" name="keyword" value="">
-                            <button class="btn btn-info" type="submit" id="searchButton">検索</button>
-                        </form>
+
                     </ul>
                 </div>
             </div>
