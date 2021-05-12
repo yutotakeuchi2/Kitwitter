@@ -27,7 +27,8 @@
                                                     <video src="{{ asset('storage/tweetimage/' . $searchResult->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
                                                 @endif
                                             @endif
-                                        <p class="delete"><a href="/destroy/{{$searchResult->id}}">削除</a></p>
+                                        <p class="delete"><a href="/destroy/{{$searchResult->id}}">削除</a>
+                                        <a href="/tweet/show/{{$searchResult->id}}">詳細</a></p>
                                     </div>
                                 @endforeach
                             @endif

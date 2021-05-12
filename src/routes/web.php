@@ -23,6 +23,7 @@ Route::get('/index','TweetController@index');
 
 //Route::get('/index','TweetGetController@index');
 Route::get('/destroy/{id}', 'TweetController@destroy');
+Route::get('tweet/show/{id}','TweetController@show');
 
 //Route::group(['prefix' => 'users'], function()
 //{
