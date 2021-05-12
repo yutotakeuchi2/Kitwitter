@@ -12,9 +12,9 @@
                         <div class="card-header">Tweet</div>
                         <div class="card-body" id="time-line">
                           <div class="tweet-line">
-                            <p class="username-font">User : {{$tweet_data->name}}</p>
+                            <p class="username-font">User :<a href="/users/show/{{$tweet_data->user_id}}>"> {{$tweet_data->user->name}}</a></p>
                               <p>{{$tweet_data->text}}</p>
-                              <p>{{$tweet_data->created_at}}</p>
+                              <p class="mt-5">{{$tweet_data->created_at}}</p>
                               @if(isset($tweet_data->content_url))
                                 @if ($tweet_data->content_extension == "image")
                                   <img src="{{ asset('storage/tweetimage/' . $tweet_data->content_url) }}" class="image-size">

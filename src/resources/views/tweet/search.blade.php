@@ -18,9 +18,8 @@
                             @else
                                 @foreach($searchResults as $searchResult)
                                     <div class="tweet-line">
-                                        <p class="username-font">User : <a href="/users/show/{{$searchResult->user_id}}">{{$searchResult->user->name}}</a></p>
+                                        <p class="username-font">User : <a href="/users/show/{{$searchResult->user_id}}">{{$searchResult->user->name}}</a><span>{{abs($searchResult->created_at->format('h'))}}h</span></p>
                                         <p>{{$searchResult->text}}</p>
-                                        <p>{{$searchResult->created_at}}</p>
                                             @if(isset($searchResult->content_url))
                                                 @if ($searchResult->content_extension == "image")
                                                     <img src="{{ asset('storage/tweetimage/' . $searchResult->content_url) }}" class="image-size">

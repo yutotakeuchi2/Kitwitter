@@ -17,9 +17,8 @@
                         <div class="card-body" id="time-line">
                           @foreach ($user_data->tweets()->orderBy('created_at','desc')->get() as $tweet)
                           <div class="tweet-line">
-                            <p class="username-font">User : {{$user_data->name}}</p>
+                            <p class="username-font">User : {{$user_data->name}}<span>{{abs($user_data->created_at->format('h'))}}h</span></p>
                               <p>{{$tweet->text}}</p>
-                              <p>{{$tweet->created_at}}</p>
                               @if(isset($tweet->content_url))
                                 @if ($tweet->content_extension == "image")
                                   <img src="{{ asset('storage/tweetimage/' . $tweet->content_url) }}" class="image-size">
