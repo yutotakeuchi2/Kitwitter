@@ -29,6 +29,7 @@ Route::get('/destroy/{id}', 'TweetController@destroy');
     Route::get('users/index', 'UsersController@index');
     Route::get('users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('users/edit', 'UsersController@update');
+    Route::get('users/show/{id}','UsersController@show');
 //});
     Route::get('/search','TweetController@read')->name('search');
-
+Route::view('/test', "test");

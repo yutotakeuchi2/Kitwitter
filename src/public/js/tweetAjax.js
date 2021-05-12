@@ -30,7 +30,7 @@ function sendTweet(formData) {
     let extension = data.original.content_extension;
     let html = `
       <div class="tweet-line">
-      <p class="username-font">User : ${name}</p>
+      <p class="username-font">User : <a href="/users/show/${data.original.user_id}">${name}</a></p>
       <p>${text}</p>
       `;
     if (extension == "image") {
