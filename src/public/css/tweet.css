@@ -23,3 +23,14 @@ p.delete{
     font-weight:normal;
     font-size:13px;
 }
+
+.tweetLink {
+    position: relative;
+}
+.range a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
+}

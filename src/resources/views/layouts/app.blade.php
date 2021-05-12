@@ -20,6 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tweet.css') }}" rel="stylesheet">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet">
+
+    <!-- div全体リンクの実装 -->
+
 </head>
 <body>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
