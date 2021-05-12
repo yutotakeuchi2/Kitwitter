@@ -4,7 +4,6 @@
 }
 
 .tweet-line{
-    border-bottom:thin solid gray;
     margin:1.875rem 0px;
     width:auto;
 }
@@ -33,4 +32,14 @@ p.delete{
     left: 0;
     height:100%;
     width: 100%;
+
+}
+
+.range-btn{
+    width:100%;
+    text-align:left;
+    background: transparent;
+    border:none;
+    outline:none;
+    border-bottom:1px solid rgba(168, 190, 208, 0.542);
 }
