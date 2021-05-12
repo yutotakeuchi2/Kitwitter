@@ -19,6 +19,7 @@
                           <div class="tweet-line">
                             <p class="username-font">User : {{$user_data->name}}</p>
                               <p>{{$tweet->text}}</p>
+                              <p>{{$tweet->created_at}}</p>
                               @if(isset($tweet->content_url))
                                 @if ($tweet->content_extension == "image")
                                   <img src="{{ asset('storage/tweetimage/' . $tweet->content_url) }}" class="image-size">

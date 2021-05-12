@@ -35,6 +35,7 @@
                         <div class="tweet-line">
                         <p class="username-font">User : <a href="/users/show/{{$d->user_id}}>">{{$d->user->name}}</a></p>
                         <p>{{$d->text}}</p>
+                        <p>{{$d->created_at}}</p>
                         @if(isset($d->content_url))
                         @if ($d->content_extension == "image")
                               <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}" class="image-size">
