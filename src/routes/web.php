@@ -12,16 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome');//ルートがindexで、ログインされてななければwelcomeに飛ばす形でもいい？
 });
 
 Auth::routes();
-Route::post('/tweet/store', 'TweetController@store');
-Route::get('/home', 'HomeController@home')->name('home');
-//Route::get('/tweet/add', 'TweetController@add');
+//Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/index','TweetController@index');
-
-//Route::get('/index','TweetGetController@index');
+Route::post('/tweet/store', 'TweetController@store');
 Route::get('/destroy/{id}', 'TweetController@destroy');
 Route::get('tweet/show/{id}','TweetController@show');
 
@@ -32,5 +29,6 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
 //});
-    Route::get('/search','TweetController@read')->name('search');
+    Route::get('search/index','SearchController@index')->name('index');
+    //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php
 Route::view('/test', "test");

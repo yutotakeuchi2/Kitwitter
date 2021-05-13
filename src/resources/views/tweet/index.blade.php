@@ -33,11 +33,8 @@
                   <div class="card-body" id="time-line">
                         @foreach($data as $d)
 
-                                                            {{--<div  class="tweetLink">
-                                                                  <a class="range" href="/tweet/show/{{$d->id}}"></a>--}}
                         <div class="tweetLink" >
                         <div id="{{$d->id}}">
-                                                            {{--<button class="range-btn" onfocus="this.blur();" onclick="location.href='/tweet/show/{{$d->id}}'">--}}
                               <div class="tweet-line">
                               <p class="username-font">User : <a href="/users/show/{{$d->user_id}}>">{{$d->user->name}}</a></p>
                               <p>{{$d->text}}</p>
@@ -48,8 +45,7 @@
                                     <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
                               @endif
                               @endif
-                              <p class="delete"><a href="/destroy/{{$d->id}}">削除</a>
-                              <!--<a href="/tweet/show/{{$d->id}}">詳細</a>--></p>
+                              <p class="delete"><a href="/destroy/{{$d->id}}">削除</a></p>
                               </div>
                               <script>
                                     jQuery(function($){
@@ -59,13 +55,6 @@
                                           });
                                     });
                               </script>
-                                                            {{--</button>--}}
-                                                            {{--</div>--}}
-                                                            {{--<script type="text/javascript">
-                                                            function DivFrameClick() {
-                                                                  document.location.href = "/tweet/show/{{$d->id}}";
-                                                            };
-                                                            </script>--}}
                         </div>
                         </div>
                         @endforeach
