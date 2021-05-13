@@ -39,7 +39,8 @@ function sendTweet(formData) {
       html += `<video src="../storage/tweetimage/${data.original.content_url}" controls playsinline controlsList="nodownload" class="image-size"></video>`
     }
 
-    html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+    html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a>
+              <a href="/tweet/show/${data.original.id}">詳細</a></p>
               </div>
     `
 
