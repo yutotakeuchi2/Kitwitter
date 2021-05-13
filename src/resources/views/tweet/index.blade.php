@@ -51,7 +51,7 @@
                                     jQuery(function($){
                                           $('.tweetLink').css('cursor','pointer');
                                           $('.tweetLink').on('click',function(){
-                                                window.location.href= "tweet/show/"+$(this).find('div').attr('id');
+                                                window.location.href= "/tweet/show/"+$(this).find('div').attr('id');
                                           });
                                     });
                               </script>
