@@ -16,12 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::post('/tweet/store', 'TweetController@store');
-Route::get('/home', 'HomeController@home')->name('home');
-//Route::get('/tweet/add', 'TweetController@add');
+//Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/index','TweetController@index');
-
-//Route::get('/index','TweetGetController@index');
+Route::post('/tweet/store', 'TweetController@store');
 Route::get('/destroy/{id}', 'TweetController@destroy');
 Route::get('tweet/show/{id}','TweetController@show');
 
@@ -32,5 +29,5 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
 //});
-    Route::get('/search','TweetController@read')->name('search');
+    Route::get('/search','SearchController@read')->name('search');
 Route::view('/test', "test");
