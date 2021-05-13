@@ -24,12 +24,10 @@ p.delete{
 }
 
 .tweetLink{
-    height:100%;
-    width:100%;
     border-bottom: 1px solid rgb(202, 202, 202);
 }
 .tweetLink:hover {
-    background-color: rgb(221, 215, 215);
+    background-color: rgb(214, 214, 214);
 
 }
 
