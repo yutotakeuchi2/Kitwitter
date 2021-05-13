@@ -53,7 +53,7 @@
                               </div>
                               <script>
                                     jQuery(function($){
-                                          $('.tweetLink').css('cursor','pointer');
+                                          $('.tweetLink').css('cursor':'pointer');
                                           $('.tweetLink').on('click',function(){
                                                 window.location.href= "tweet/show/"+$(this).find('div').attr('id');
                                           });
@@ -66,7 +66,7 @@
                                                                   document.location.href = "/tweet/show/{{$d->id}}";
                                                             };
                                                             </script>--}}
-                                                            </div>
+                        </div>
                         </div>
                         @endforeach
                         </div>

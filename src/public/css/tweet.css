@@ -23,27 +23,13 @@ p.delete{
     font-size:13px;
 }
 
-.tweetLink:hover {
-    background-color: blueviolet;
-}
-.range a {
-    position: absolute;
-    top: 0;
-    left: 0;
+.tweetLink{
     height:100%;
-    width: 100%;
-
-}
-
-.range-btn{
     width:100%;
-    text-align:left;
-    background: transparent;
-    border:none;
-    outline:none;
-    border-bottom:1px solid rgba(168, 190, 208, 0.542);
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+.tweetLink:hover {
+    background-color: rgb(221, 215, 215);
+
 }
 
-button:hover{
-    background-color: rgba(44, 37, 37, 0.802);
-}
