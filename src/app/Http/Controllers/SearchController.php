@@ -16,7 +16,7 @@ class SearchController extends Controller
 
         $keyword = $request->input('keyword');
         $searchUserId = User::getUserIds($keyword);
-        $searchResults = Tweet::searchTweets($searchUserId,$keyword);
-        return view('search/index',compact('searchResults'));
+        $tweets = Tweet::searchTweets($searchUserId,$keyword);
+        return view('search/index',compact('tweets'));
     }
 }

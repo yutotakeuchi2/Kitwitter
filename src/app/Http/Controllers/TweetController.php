@@ -25,17 +25,17 @@ class TweetController extends Controller
     {
         $tweets = new Tweet();
 
-        $data = $tweets->getTweet();
+        $tweets = $tweets->getTweet();
 
-        return view('/tweet/index',['data' => $data ]);
+        return view('/tweet/index',compact('tweets'));
     }
 
 
 
     public function show($id)
     {
-        $tweet_data = Tweet::getOneTweet($id);
-        return view('/tweet/show', compact('tweet_data'));
+        $tweets = Tweet::getOneTweet($id);
+        return view('/tweet/show', compact('tweets'));
     }
 
 }

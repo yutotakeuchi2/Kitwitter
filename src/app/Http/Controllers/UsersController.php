@@ -38,7 +38,7 @@ class UsersController extends Controller
     }
 
     public function show($id){
-        $user_data = User::getUserData($id);
-        return view('users/show',compact('user_data'));
+        $tweets = User::getUserData($id);
+        return view('users/show',compact('tweets'));
     }
 }
