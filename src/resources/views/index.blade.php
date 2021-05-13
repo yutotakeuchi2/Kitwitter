@@ -28,38 +28,48 @@
                         </form>
                   </div>
 
-                  <div class="card">
-                  <div class="card-header">タイムライン</div>
+      <div class="card">
+            <div class="card-header">タイムライン</div>
                   <div class="card-body" id="time-line">
                         @foreach($data as $d)
 
-                        {{--<div  class="tweetLink">
-                              <a class="range" href="/tweet/show/{{$d->id}}"></a>--}}
-                        <div>
-                        <button class="range-btn" onfocus="this.blur();" onclick="location.href='/tweet/show/{{$d->id}}'">
-                        <div class="tweet-line">
-                        <p class="username-font">User : <a href="/users/show/{{$d->user_id}}>">{{$d->user->name}}</a></p>
-                        <p>{{$d->text}}</p>
-                        @if(isset($d->content_url))
-                        @if ($d->content_extension == "image")
-                              <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}" class="image-size">
-                        @elseif ($d->content_extension == "video")
-                              <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
-                        @endif
-                        @endif
-                        <p class="delete"><a href="/destroy/{{$d->id}}">削除</a>
-                        <!--<a href="/tweet/show/{{$d->id}}">詳細</a>--></p>
-                        </div>
-                        </button>
-                        {{--</div>--}}
-                        {{--<script type="text/javascript">
-                        function DivFrameClick() {
-                              document.location.href = "/tweet/show/{{$d->id}}";
-                        };
-                        </script>--}}
+                                                            {{--<div  class="tweetLink">
+                                                                  <a class="range" href="/tweet/show/{{$d->id}}"></a>--}}
+                        <div class="tweetLink" >
+                        <div id="{{$d->id}}">
+                                                            {{--<button class="range-btn" onfocus="this.blur();" onclick="location.href='/tweet/show/{{$d->id}}'">--}}
+                              <div class="tweet-line">
+                              <p class="username-font">User : <a href="/users/show/{{$d->user_id}}>">{{$d->user->name}}</a></p>
+                              <p>{{$d->text}}</p>
+                              @if(isset($d->content_url))
+                              @if ($d->content_extension == "image")
+                                    <img src="{{ asset('storage/tweetimage/' . $d->content_url) }}" class="image-size">
+                              @elseif ($d->content_extension == "video")
+                                    <video src="{{ asset('storage/tweetimage/' . $d->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
+                              @endif
+                              @endif
+                              <p class="delete"><a href="/destroy/{{$d->id}}">削除</a>
+                              <!--<a href="/tweet/show/{{$d->id}}">詳細</a>--></p>
+                              </div>
+                              <script>
+                                    jQuery(function($){
+                                          $('.tweetLink').css('cursor','pointer');
+                                          $('.tweetLink').on('click',function(){
+                                                window.location.href= "tweet/show/"+$(this).find('div').attr('id');
+                                          });
+                                    });
+                              </script>
+                                                            {{--</button>--}}
+                                                            {{--</div>--}}
+                                                            {{--<script type="text/javascript">
+                                                            function DivFrameClick() {
+                                                                  document.location.href = "/tweet/show/{{$d->id}}";
+                                                            };
+                                                            </script>--}}
+                                                            </div>
                         </div>
                         @endforeach
-                  </div>
+                        </div>
                   </div>
             </div>
       </div>
