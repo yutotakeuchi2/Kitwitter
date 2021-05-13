@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome');//ルートがindexで、ログインされてななければwelcomeに飛ばす形でもいい？
 });
 
 Auth::routes();
@@ -29,5 +29,6 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
 //});
-    Route::get('/search','SearchController@read')->name('search');
+    Route::get('search/index','SearchController@index')->name('index');
+    //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php
 Route::view('/test', "test");

@@ -8,7 +8,7 @@ use App\Tweet;
 
 class SearchController extends Controller
 {
-        public function read(Request $request){
+        public function index(Request $request){//ajaxなど処理だけを行う場合（viewがない場合）はAPIにしたほうがいい　今回はおｋ
 
         $validateData = $request->validate([
             'keyword' => 'required',
@@ -17,6 +17,6 @@ class SearchController extends Controller
         $keyword = $request->input('keyword');
         $searchUserId = User::getUserIds($keyword);
         $searchResults = Tweet::searchTweets($searchUserId,$keyword);
-        return view('tweet/search',compact('searchResults'));
+        return view('search/index',compact('searchResults'));
     }
 }

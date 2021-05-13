@@ -47,7 +47,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <form class="form-inline box" action="/search" id="searchForm">
+                        <form class="form-inline box" action="/search/index" id="searchForm">
                             <input class="form-control mr-sm-1" id="searchValue" type="search" name="keyword" placeholder="検索ワードを入力">
                             <button class="btn btn-info" type="submit" id="searchButton" style="display:none;">検索</button>
                         </form>
