@@ -34,8 +34,8 @@ class TweetController extends Controller
 
     public function show($id)
     {
-        $tweets = Tweet::getOneTweet($id);
-        return view('/tweet/show', compact('tweets'));
+        $tweet = Tweet::getOneTweet($id);
+        return view('/tweet/show', compact('tweet'));
     }
 
 }

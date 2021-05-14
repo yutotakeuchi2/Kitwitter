@@ -17,7 +17,7 @@
                             <p>検索結果がありません</p>
                             @else
                                 @foreach($tweets as $tweet)
-                                    <div class="tweet-line">
+                                    {{-- <div class="tweet-line">
                                         <p class="username-font">User : <a href="/users/show/{{$tweet->user_id}}">{{$tweet->user->name}}</a></p>
                                         <p>{{$tweet->text}}</p>
                                             @if(isset($tweet->content_url))
@@ -29,7 +29,8 @@
                                             @endif
                                         <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a>
                                         <a href="/tweet/show/{{$tweet->id}}">詳細</a></p>
-                                    </div>
+                                    </div> --}}
+                                    @include('tweet.tweetTemplate')
                                 @endforeach
                             @endif
                         </div>

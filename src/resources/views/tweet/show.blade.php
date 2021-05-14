@@ -11,10 +11,10 @@
                 <div class="card">
                         <div class="card-header">Tweet</div>
                         <div class="card-body" id="time-line">
-                          <div class="tweet-line">
+                          {{-- <div class="tweet-line">
                             <p class="username-font">User :<a href="/users/show/{{$tweets->user_id}}>"> {{$tweets->user->name}}</a></p>
                               <p>{{$tweets->text}}</p>
-                              <p class="mt-5">{{$tweets->created_at}}</p>
+
                               @if(isset($tweets->content_url))
                                 @if ($tweets->content_extension == "image")
                                   <img src="{{ asset('storage/tweetimage/' . $tweets->content_url) }}" class="image-size">
@@ -23,7 +23,9 @@
                               @endif
                               @endif
                             <p class="delete"><a href="/destroy/{{$tweets->id}}">削除</a></p>
-                          </div>
+                          </div> --}}
+                          @include('tweet.tweetTemplate')
+                          <p class="mt-5">{{$tweet->created_at}}</p>
                         </div>
                     </div>
                 </div>
