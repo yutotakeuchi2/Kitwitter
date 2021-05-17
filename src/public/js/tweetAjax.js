@@ -41,7 +41,8 @@ function sendTweet(formData) {
             html += `<video src="../storage/tweetimage/${data.original.content_url}" controls playsinline controlsList="nodownload" class="image-size"></video>`
         }
 
-        html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></div></div></div>`
+        html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+        <a href=""><i class="fas fa-heart fa-2x my-pink"></i></a></div></div></div>`
 
         $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
         console.log("appendしたよ");
