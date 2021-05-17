@@ -29,6 +29,8 @@ function sendTweet(formData) {
 
     let extension = data.original.content_extension;
     let html = `
+      <div class="tweetLink">
+      <div id="${data.original.id}">
       <div class="tweet-line">
       <p class="username-font">User : <a href="/users/show/${data.original.user_id}">${name}</a></p>
       <p>${text}</p>
@@ -40,12 +42,20 @@ function sendTweet(formData) {
     }
 
     html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a>
-              <a href="/tweet/show/${data.original.id}">詳細</a></p>
+              </div>
+              </div>
               </div>
     `
 
     $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
     console.log("appendしたよ");
+
+    jQuery(function ($) {
+      $('.tweetLink').css('cursor', 'pointer');
+      $('.tweetLink').on('click', function () {
+        window.location.href = "/tweet/show/" + $(this).find('div').attr('id');
+      });
+    });
 
   }).fail(function () {
     //ajax通信がエラーのときの処理
