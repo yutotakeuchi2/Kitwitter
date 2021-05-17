@@ -91,7 +91,7 @@
                 @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/index') }}" >Home</a>
+                        <a href="{{ url('/tweet/index') }}" >Home</a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn--orange btn--radius">Login</a>
 

@@ -53,7 +53,7 @@ class Tweet extends Model
 }
 
     public static function getOneTweet($id){
-        $return_tweet = Tweet::with('user')->find($id);
+        $return_tweet = Tweet::with('user')->find($id);//findだとコレクションの構造が違い共通テンプレートで表示するのに不便なため、wheregetを使用
         return $return_tweet;
     }
 

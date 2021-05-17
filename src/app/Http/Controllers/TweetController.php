@@ -17,25 +17,25 @@ class TweetController extends Controller
     }
 
     public function destroy($tweet_id){
-        $data = Tweet::destroyTweet($tweet_id);
-        return view("/tweet/index", compact("data"));
+        $tweets = Tweet::destroyTweet($tweet_id);
+        return view("/tweet/index", compact("tweets"));
     }
 
     public function index()
     {
         $tweets = new Tweet();
 
-        $data = $tweets->getTweet();
+        $tweets = $tweets->getTweet();
 
-        return view('/tweet/index',['data' => $data ]);
+        return view('/tweet/index',compact('tweets'));
     }
 
 
 
     public function show($id)
     {
-        $tweet_data = Tweet::getOneTweet($id);
-        return view('/tweet/show', compact('tweet_data'));
+        $tweet = Tweet::getOneTweet($id);
+        return view('/tweet/show', compact('tweet'));
     }
 
 }
