@@ -57,7 +57,7 @@
                               </script>
                               </div>
                         </div> --}}
-                        @include('tweet.tweetTemplate')
+                        @include('tweet.tweetTemplate', ['tweet' => $tweet])
                         @endforeach
                   </div>
             </div>

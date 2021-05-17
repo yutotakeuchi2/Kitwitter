@@ -30,7 +30,7 @@
                                         <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a>
                                         <a href="/tweet/show/{{$tweet->id}}">詳細</a></p>
                                     </div> --}}
-                                    @include('tweet.tweetTemplate')
+                                    @include('tweet.tweetTemplate', ['tweet' => $tweet])
                                 @endforeach
                             @endif
                         </div>
