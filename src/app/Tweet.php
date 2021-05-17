@@ -69,4 +69,9 @@ public function user() {
     return $this->belongsTo('App\User');
 }
 
+//tweet_tableとfavorite_tableの一対多のリレーション
+public function favorites(){
+    return $this->hasMany('App\Favorite');
+}
+
 }
