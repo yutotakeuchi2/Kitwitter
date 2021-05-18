@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tweet;
 use App\TweetGet;
 use App\User;
+use App\Favorite;
 
 class TweetController extends Controller
 {
@@ -27,9 +28,10 @@ class TweetController extends Controller
 
         $tweets = $tweets->getTweet();
 
-        $favorite = Favorite::favoriteCount();
 
-        return view('/tweet/index',compact('tweets','favorite'));
+        // $favorite = Favorite::favoriteCount($tweet_id);
+
+        return view('/tweet/index',compact('tweets'));
     }
 
 

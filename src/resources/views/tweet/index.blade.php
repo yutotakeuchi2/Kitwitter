@@ -37,7 +37,7 @@
 
                         @include('tweet.tweetTemplate', ['tweet' => $tweet])
                         <a href="#" data-postid="{{$tweet->id}}" id="favoriteButton"><i class="fas fa-heart fa-2x my-pink"></i></a>
-            <span id="favoriteCount"></span>
+                        <span id="favoriteCount">{{$tweet->favorites_count}}</span>
                         @endforeach
                 </div>
             </div>

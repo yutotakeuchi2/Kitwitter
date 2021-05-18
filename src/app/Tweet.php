@@ -47,7 +47,7 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-            $data = Tweet::all()->sortByDesc('created_at');
+            $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
             return $data;
 
 }
