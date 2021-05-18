@@ -17,14 +17,14 @@ class Favorite extends Model
         return $this->belongsTo('App\Tweet');
     }
 
-    protected $guarded = ['user_id','tweet_id'];
+    protected $fillable = ['user_id','tweet_id'];
 
-    public function insertFavorite($user_id,$tweet_id){
+    public static function insertFavorite($user_id,$tweet_id){
         $favorite = new Favorite();
 
         $favorite->fill([
-                    'user_id'  => '$user_id',
-                    'tweet_id' => '$tweet_id',
+                    'user_id'  => $user_id,
+                    'tweet_id' => $tweet_id,
                     ]);
 
         $favorite->save();

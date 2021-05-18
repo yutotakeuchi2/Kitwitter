@@ -10,10 +10,12 @@ class FavoriteController extends Controller
 {
     public function store(Request $request)
     {
+        //return $request;
         $user_id = Auth::user()->id;
-        $post_id = $request->post_id;//ajaxで入れたデータ
-        Favorite::insertFavorite($user_id, $post_id);
-        $fav_count = Favorite::favoriteCount($post_id);
+        $tweet_id = $request->tweet_id;//ajaxで入れたデータ
+        //return $post_id;
+        Favorite::insertFavorite($user_id, $tweet_id);
+        $fav_count = "1";//Favorite::favoriteCount($tweet_id);
         return response()->json($fav_count);
     }
 }
