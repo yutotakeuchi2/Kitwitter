@@ -24,7 +24,4 @@ class FavoriteController extends Controller
         return response()->json($fav_count);
     }
 
-    public function index(Request $request){
-
-    }
 }
