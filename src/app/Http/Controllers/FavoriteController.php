@@ -18,4 +18,8 @@ class FavoriteController extends Controller
         $fav_count = "1";//Favorite::favoriteCount($tweet_id);
         return response()->json($fav_count);
     }
+
+    public function index(Request $request){
+
+    }
 }

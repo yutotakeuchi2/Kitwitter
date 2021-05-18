@@ -74,12 +74,6 @@ public function favorites(){
     return $this->hasMany('App\Favorite');
 }
 
-//いいねされた数の取得
-public function favoriteCount($tweet_id){
-    $favoriteCount = Tweet::with('favorites')->where('tweet_id',$tweet_id)->get()->count();
-    return $favoriteCount;
-}
-
 
 
 }
