@@ -16,4 +16,8 @@ class FavoriteController extends Controller
         $fav_count = Favorite::favoriteCount($post_id);
         return response()->json($fav_count);
     }
+
+    public function index(Request $request){
+
+    }
 }
