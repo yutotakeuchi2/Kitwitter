@@ -1,5 +1,6 @@
 $(function () {
-  $('#favoriteButton').on('click', function (e) {
+  $('.favoriteButton').on('click', function (e) {
+    console.log("押した");
     $this = $(this);
     $post_id = $this.data('postid');
     e.preventDefault();
