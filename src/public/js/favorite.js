@@ -14,7 +14,7 @@ $(function () {
       },
       dataType: 'json'
     }).done(function (data) {
-      $this.next('#favoriteCount').html("1");
+      $this.next('#favoriteCount').html(data);
       console.log(data);
     }).fail(function (data, xhr, err){
       console.log("どま");
