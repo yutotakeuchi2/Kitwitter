@@ -42,7 +42,10 @@ function sendTweet(formData) {
         }
 
         html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
-        <a href=""><i class="fas fa-heart fa-2x my-pink"></i></a></div></div></div>`
+        </div></div></div>
+        <a href="#" class="favoriteButton" data-postid="${data.original.id}"><i class="fas fa-heart fa-2x my-pink"></i></a>
+        <span id="favoriteCount">0</span>
+        `//ajaxで出した分のボタンが反応しない　多分DOMの読み込みの問題　どうするか　調べよう...
 
         $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
         console.log("appendしたよ");
