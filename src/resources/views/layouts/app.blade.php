@@ -96,5 +96,6 @@
     <script src="{{ asset('/js/tweetAjax.js')}}"></script>
     <script src="{{ asset('/js/validateSearch.js')}}"></script>
     <script src="{{ asset('/js/tweetLink.js')}}"></script>
+    <script src="{{ asset('/js/favorite.js')}}"></script>
 </body>
 </html>

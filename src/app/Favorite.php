@@ -17,14 +17,14 @@ class Favorite extends Model
         return $this->belongsTo('App\Tweet');
     }
 
-    protected $guarded = ['user_id','tweet_id'];
+    protected $fillable = ['user_id','tweet_id'];
 
-    public function insertFavorite($user_id,$tweet_id){
+    public static function insertFavorite($user_id,$tweet_id){
         $favorite = new Favorite();
 
         $favorite->fill([
-                    'user_id'  => '$user_id',
-                    'tweet_id' => '$tweet_id',
+                    'user_id'  => $user_id,
+                    'tweet_id' => $tweet_id,
                     ]);
 
         $favorite->save();
@@ -33,19 +33,19 @@ class Favorite extends Model
 
     }
 
-    public function destroyFavorite($user_id,$tweet_id){
+    public static function destroyFavorite($user_id,$tweet_id){
         //すでにfavoriteにuser_id&tweet_idが一致するレコ＾ドがあれば削除
-        $favorite = Favorite::where('tweet_id','$tweet_id')
-                                ->where('user_id','$user_id')
+        $favorite = Favorite::where('tweet_id',$tweet_id)
+                                ->where('user_id',$user_id)
                                 ->delete();
     }
 
     //すでにいいねされているかの確認
-    public function favoriteExist($id,$tweet_id){
+    public static function favoriteExist($id,$tweet_id){
 
         //Favoriteテーブルのレコードにuser_idとtweet_idが一致するものを取得
-        $exist = Favorite::where('user_id','=','$id')
-                            ->where('tweet_id','=','$tweet_id')
+        $exist = Favorite::where('user_id','=',$id)
+                            ->where('tweet_id','=',$tweet_id)
                             ->get();
 
         // レコードが存在するなら

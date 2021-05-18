@@ -34,8 +34,12 @@
                     @foreach($tweets as $tweet)
 
 
-                    @include('tweet.tweetTemplate', ['tweet' => $tweet])
-                    @endforeach
+
+                        @include('tweet.tweetTemplate', ['tweet' => $tweet])
+                        <a href="#" data-postid="{{$tweet->id}}" id="favoriteButton"><i class="fas fa-heart fa-2x my-pink"></i></a>
+            <span id="favoriteCount"></span>
+                        @endforeach
+                </div>
             </div>
         </div>
 </div>

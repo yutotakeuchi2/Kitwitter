@@ -11,7 +11,6 @@
                 @endif
             @endif
             <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a></p>
-            <a href="" data-postid="{{$tweet->id}}"><i class="fas fa-heart fa-2x my-pink"></i><span></span></a>
         </div>
     </div>
 </div>
