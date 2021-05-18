@@ -27,7 +27,9 @@ class TweetController extends Controller
 
         $tweets = $tweets->getTweet();
 
-        return view('/tweet/index',compact('tweets'));
+        $favorite = Favorite::favoriteCount();
+
+        return view('/tweet/index',compact('tweets','favorite'));
     }
 
 

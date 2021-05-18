@@ -66,7 +66,7 @@ class Favorite extends Model
     }
 
         //いいねされた数の取得
-    public function favoriteCount($tweet_id){
+    public static function favoriteCount($tweet_id){
         $favoriteCount = Favorite::where('tweet_id',$tweet_id)->get()->count();
         return $favoriteCount;
     }
