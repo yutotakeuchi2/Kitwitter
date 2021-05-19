@@ -59,7 +59,7 @@ class Tweet extends Model
     }
 
     public static function searchTweets($userIds, $keyword){
-        $tweets = Tweet::whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
+        $tweets = Tweet::withCount('favorites')->whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
         return $tweets;
     }
 

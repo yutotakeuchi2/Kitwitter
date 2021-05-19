@@ -54,7 +54,10 @@ class User extends Authenticatable
     }
 
     public static function getUserData($user_id){
-        $user_data = User::with('tweets')->find($user_id);
+        $user_data = User::with(['tweets' => function($query){
+            $query->withCount('favorites');
+        }])->find($user_id);
+
         return $user_data;
     }
 

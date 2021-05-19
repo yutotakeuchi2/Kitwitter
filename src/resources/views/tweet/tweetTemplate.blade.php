@@ -15,7 +15,7 @@
     </div>
 </div>
 <div>
-            <a href="#" data-postid="{{$tweet->id}}" class="favoriteButton"><i class="far fa-heart fa-2x my-pink"></i></a>
+            <a href="#" data-postid="{{$tweet->id}}" class="favorite-button"><i class="far fa-heart fa-2x my-pink"></i></a>
                         <span id="favoriteCount">{{$tweet->favorites_count}}</span>
 </div>
 

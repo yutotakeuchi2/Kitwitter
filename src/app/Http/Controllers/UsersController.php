@@ -39,6 +39,7 @@ class UsersController extends Controller
 
     public function show($id){
         $tweets = User::getUserData($id);
+        //return view("/test", compact('tweets'));
         return view('users/show',compact('tweets'));
     }
 }
