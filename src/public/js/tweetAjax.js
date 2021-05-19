@@ -12,7 +12,7 @@ function sendTweet(formData) {
     $.ajax({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         type: 'post',
-        url: '/tweet/store', //後述するweb.phpのURLと同じ形にする
+        url: '/tweet/store',
         data: formData, //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
         dataType: 'json', //json形式で受け取る
         processData: false,
@@ -45,7 +45,7 @@ function sendTweet(formData) {
         </div></div></div>
         <a href="#" class="favorite-button" data-postid="${data.original.id}"><i class="far fa-heart fa-2x my-pink"></i></a>
         <span id="favoriteCount">0</span>
-        `//ajaxで出した分のボタンが反応しない　多分DOMの読み込みの問題　どうするか　調べよう...
+        `
 
         $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
         console.log("appendしたよ");

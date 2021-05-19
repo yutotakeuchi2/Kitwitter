@@ -13,8 +13,6 @@ class TweetController extends Controller
     public function store(Request $formData){
         $data = Tweet::addTweet($formData);//本来はコントローラーで保存する要素の制限をする→データの抽出
         return response()->json($data);
-        //$tweet_text = Tweet::addTweet($request);
-        //return view("/test",compact("tweet_text"));
     }
 
     public function destroy($tweet_id){
@@ -25,12 +23,7 @@ class TweetController extends Controller
     public function index()
     {
         $tweets = new Tweet();
-
         $tweets = $tweets->getTweet();
-
-
-        // $favorite = Favorite::favoriteCount($tweet_id);
-
         return view('/tweet/index',compact('tweets'));
     }
 

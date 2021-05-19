@@ -19,8 +19,6 @@ class UsersController extends Controller
     //userデータの編集
     public function edit() {
         return view('users.edit', ['user' => Auth::user() ]);
-
-        //return view('users.index', ['user' => User::user() ]);
     }
 
     //userデータの保存

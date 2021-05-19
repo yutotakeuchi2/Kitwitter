@@ -32,12 +32,8 @@
         <div class="card-header">タイムライン</div>
             <div class="card-body" id="time-line">
                     @foreach($tweets as $tweet)
-
-
-
                         @include('tweet.tweetTemplate', ['tweet' => $tweet])
-
-                        @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
