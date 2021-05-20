@@ -33,7 +33,7 @@ class UsersController extends Controller
         //保存
         $user->fill($user_form)->save();
         //リダイレクト
-        return redirect('/index');
+        return redirect('/tweet/index');
     }
 
     public function show($id){
