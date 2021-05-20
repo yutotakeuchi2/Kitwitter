@@ -14,9 +14,7 @@
                     <div class="card-header">ユーザー詳細</div>
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
-                          @foreach ($tweets->tweets()->orderBy('created_at','desc')->withCount('favorites')->get() as $tweet)
-                                    <p>{{$tweet}}</p>
-                                @endforeach
+                         {{$tweets['data']}}
                         </div>
                         <div class="card-body" id="time-line">
 
