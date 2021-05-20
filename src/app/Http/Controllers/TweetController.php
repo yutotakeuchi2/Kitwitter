@@ -22,9 +22,16 @@ class TweetController extends Controller
 
     public function index()
     {
+        $tweet = [];
         $tweets = new Tweet();
-        $tweets = $tweets->getTweet();
-        // return view('/test',compact('tweets'));
+        $data = $tweets->getTweet();
+        $favorite_model = new Favorite;
+        $tweets = [
+                    'data' => $data,
+                    'favorite_model' => $favorite_model,
+        ];
+
+        //return view('/test',compact('tweets'));
         return view('/tweet/index',compact('tweets'));
     }
 
@@ -32,8 +39,14 @@ class TweetController extends Controller
 
     public function show($id)
     {
-        $tweet = Tweet::getOneTweet($id);
-        return view('/tweet/show', compact('tweet'));
+        $tweets = [];
+        $data = Tweet::getOneTweet($id);
+        $favorite_model = new Favorite;
+        $tweets = [
+                        'data' => $data,
+                        'favorite_model' => $favorite_model,
+        ];
+        return view('/tweet/show', compact('tweets'));
     }
 
 }

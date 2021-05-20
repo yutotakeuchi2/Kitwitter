@@ -47,18 +47,18 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-        $tweet_data = [];
+        //$tweet_data = [];
 
         $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
-        $favorite_model = new Favorite;
+        //$favorite_model = new Favorite;
 
-        $tweet_data = [
-                        'data' => $data,
-                        'favorite_model' => $favorite_model,
-        ];
+        // $tweet_data = [
+        //                 'data' => $data,
+        //                 'favorite_model' => $favorite_model,
+        // ];
 
 
-            return $tweet_data;
+            return $data;
 
 }
 
