@@ -15,7 +15,16 @@
     </div>
 </div>
 <div>
-            <a href="#" data-postid="{{$tweet->id}}" class="favorite-button"><i class="far fa-heart fa-2x my-pink"></i></a>
+    @if($tweets['favorite_model']->favoriteExist(Auth::user()->id,$tweet->id))
+    <p class="favorite-mark"></p>
+            <a href="#" data-postid="{{$tweet->id}}" class="favorite-button doneFav"><i class="fas fa-heart fa-2x my-pink"></i></a>
                         <span id="favoriteCount">{{$tweet->favorites_count}}</span>
+    </p>
+    @else
+    <p class="favorite-mark"></p>
+            <a href="#" data-postid="{{$tweet->id}}" class="favorite-button "><i class="far fa-heart fa-2x my-pink"></i></a>
+                        <span id="favoriteCount">{{$tweet->favorites_count}}</span>
+    </p>
+    @endif
 </div>
 
