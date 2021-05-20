@@ -32,3 +32,6 @@ p.delete{
 
 }
 
+.doneFav i {
+    color:rgb(255, 65, 201) !important ;
+}

@@ -24,7 +24,7 @@ class TweetController extends Controller
     {
         $tweets = new Tweet();
         $tweets = $tweets->getTweet();
-        // return view('/test',compact('tweets'));
+        //return view('/test',compact('tweets'));
         return view('/tweet/index',compact('tweets'));
     }
 
