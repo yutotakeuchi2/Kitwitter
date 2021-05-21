@@ -10,6 +10,9 @@
                     <video src="{{ asset('storage/tweetimage/' . $tweet->content_url)}}" controls playsinline controlsList="nodownload"  class="image-size"></video>
                 @endif
             @endif
+            @if ($date_flag === 1)
+            <p class="mt-5">{{$tweet->created_at}}</p>
+            @endif
             <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a></p>
         </div>
     </div>

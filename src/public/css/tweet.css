@@ -35,3 +35,8 @@ p.delete{
 .doneFav i {
     color:rgb(255, 65, 201) !important ;
 }
+
+.favorite-mark {
+    position:relative;
+    z-index: 2;
+}

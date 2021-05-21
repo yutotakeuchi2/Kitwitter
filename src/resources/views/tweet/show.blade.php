@@ -11,8 +11,7 @@
                         <div class="card-header">Tweet</div>
                         <div class="card-body" id="time-line">
                         <?php $tweet = $tweets['data'] ?>
-                        @include('tweet.tweetTemplate', ['tweet'=> $tweet])
-                        <p class="mt-5">{{$tweet->created_at}}</p>
+                        @include('tweet.tweetTemplate', ['tweet'=> $tweet, 'date_flag' => 1])
                         </div>
                     </div>
                 </div>

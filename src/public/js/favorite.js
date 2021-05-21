@@ -1,4 +1,4 @@
-$(function () {
+function favoriteByAjax() {
   $(document).on('click', '.favorite-button', function (e) {
     console.log("押した");
     $this = $(this);
@@ -9,7 +9,7 @@ $(function () {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
       url: '/favorite/store',
-      type: 'GET',
+      type: 'POST',
       data: {
         'tweet_id': $post_id
       },
@@ -25,4 +25,4 @@ $(function () {
       console.log(xhr);
     })
   })
-});
+};

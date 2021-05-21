@@ -15,7 +15,7 @@
                         <div class="card-header">Tweets</div>
                             <div class="card-body" id="time-line">
                                 @foreach ($tweets['data']->tweets()->orderBy('created_at','desc')->withCount('favorites')->get() as $tweet)
-                                    @include('tweet.tweetTemplate', ['tweet' => $tweet])
+                                    @include('tweet.tweetTemplate', ['tweet' => $tweet, 'date_flag' => 0])
                                 @endforeach
                             </div>
                         </div>

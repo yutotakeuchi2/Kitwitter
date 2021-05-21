@@ -18,7 +18,7 @@
                             @else
                                 @foreach($tweets['data'] as $tweet)
 
-                                    @include('tweet.tweetTemplate', ['tweet' => $tweet])
+                                    @include('tweet.tweetTemplate', ['tweet' => $tweet, 'date_flag' => 0])
                                 @endforeach
                             @endif
                         </div>
