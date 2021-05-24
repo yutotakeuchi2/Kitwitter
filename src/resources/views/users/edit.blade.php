@@ -28,10 +28,11 @@
                 アカウントテイタス
             </label>
             <div>
+
                 @if($user->isKey === 1)
-                <input type="checkbox" checked="checked" name="isKey" value="1"><span>非公開</span>
+                <input name="isKey" type="hidden" value="0"><input type="checkbox" checked="checked" name="isKey" value="1"><span>非公開</span>
                 @else
-                <input type="checkbox" name="isKey" value="1"><span>非公開</span>
+                <input name="isKey" type="hidden" value="0"><input type="checkbox" name="isKey" value="1"><span>非公開</span>
                 @endif
             </div>
             </div>
