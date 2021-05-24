@@ -24,8 +24,9 @@ p.delete{
 }
 
 .tweetLink{
-    border-bottom: 1px solid rgb(202, 202, 202);
+    /* border-bottom: 1px solid rgb(202, 202, 202); */
     cursor: pointer;
+    z-index: 1;
 }
 .tweetLink:hover {
     background-color: rgb(214, 214, 214);
@@ -36,7 +37,20 @@ p.delete{
     color:rgb(255, 65, 201) !important ;
 }
 
-.favorite-mark {
+.favorite-button i {
     position:relative;
+    color: cornflowerblue;
     z-index: 2;
+    padding: 7px 7px;
+    border-radius: 50%;
+
+}
+
+.favorite-button i:hover{
+    background-color:rgb(255, 211, 250);
+    z-index: 2;
+}
+
+.bottom-line{
+    border-bottom: 1px solid rgb(202, 202, 202);
 }
