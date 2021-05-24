@@ -10,22 +10,20 @@ use App\Favorite;
 
 class UsersController extends Controller
 {
-    //下記を追加
 
-    //userデータの取得
-    // public function index() {
-
-    //     return view('users.index', ['user' => Auth::user() ]);
-    // }
     //userデータの取得と編集
     public function edit() {
         return view('users.edit', ['user' => Auth::user() ]);
     }
 
-
-
     //userデータの保存
     public function update(Request $request) {
+
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'isKey' => 'required|numeric|between:0,1'
+        ]);
 
 
         $user_form = $request->all();
