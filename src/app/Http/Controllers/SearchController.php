@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Tweet;
+use App\Favorite;
 
 class SearchController extends Controller
 {
@@ -13,10 +14,18 @@ class SearchController extends Controller
         $validateData = $request->validate([
             'keyword' => 'required',
         ]);
+        $tweets = [];
 
         $keyword = $request->input('keyword');
         $searchUserId = User::getUserIds($keyword);
-        $tweets = Tweet::searchTweets($searchUserId,$keyword);
+        $data = Tweet::searchTweets($searchUserId,$keyword);
+        $favorite_model = new Favorite;
+
+        $tweets = [
+                        'data' => $data,
+                        'favorite_model' => $favorite_model,
+        ];
+
         return view('search/index',compact('tweets'));
     }
 }

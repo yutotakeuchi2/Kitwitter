@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Favorite;
 
 class UsersController extends Controller
 {
@@ -19,8 +20,6 @@ class UsersController extends Controller
     //userデータの編集
     public function edit() {
         return view('users.edit', ['user' => Auth::user() ]);
-
-        //return view('users.index', ['user' => User::user() ]);
     }
 
     //userデータの保存
@@ -34,11 +33,19 @@ class UsersController extends Controller
         //保存
         $user->fill($user_form)->save();
         //リダイレクト
-        return redirect('/index');
+        return redirect('/tweet/index');
     }
 
     public function show($id){
-        $tweets = User::getUserData($id);
+        $tweets = [];
+        $data = User::getUserData($id);
+        $favorite_model = new Favorite;
+        $tweets = [
+                        'data' => $data,
+                        'favorite_model' => $favorite_model,
+        ];
+
+        //return view("/test", compact('tweets'));
         return view('users/show',compact('tweets'));
     }
 }

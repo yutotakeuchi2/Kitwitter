@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tweet.css') }}" rel="stylesheet">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
 
     <!-- div全体リンクの実装 -->
 
@@ -95,5 +96,13 @@
     <script src="{{ asset('/js/tweetAjax.js')}}"></script>
     <script src="{{ asset('/js/validateSearch.js')}}"></script>
     <script src="{{ asset('/js/tweetLink.js')}}"></script>
+    <script src="{{ asset('/js/favorite.js')}}"></script>
+    <script>
+        $(function (){
+            tweetByAjax();
+            favoriteByAjax();
+            linkToTweetShow($);
+        })
+    </script>
 </body>
 </html>

@@ -1,18 +1,17 @@
-$(function () {
+function tweetByAjax() {
     $('#tweetButton').on('click', function () {　//classはユニークでない　idはユニークという決まり事　domの処理はidのほうが早い→変なエラー出にくい。処理も早い
         console.log("クリックしました");
         let formData = new FormData($("#tweetForm").get(0));//値が少ないときはvalueで取得して値を自分で配列に入れたほうがわかりやすい、変なデータを送られない対策
         console.log("空にしました");
         sendTweet(formData);
-
     });
-});
+};
 
 function sendTweet(formData) {
     $.ajax({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         type: 'post',
-        url: '/tweet/store', //後述するweb.phpのURLと同じ形にする
+        url: '/tweet/store',
         data: formData, //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
         dataType: 'json', //json形式で受け取る
         processData: false,
@@ -41,7 +40,11 @@ function sendTweet(formData) {
             html += `<video src="../storage/tweetimage/${data.original.content_url}" controls playsinline controlsList="nodownload" class="image-size"></video>`
         }
 
-        html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></div></div></div>`
+        html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
+        </div></div></div>
+        <a href="#" class="favorite-button" data-postid="${data.original.id}"><i class="fas fa-heart fa-2x my-pink"></i></a>
+        <span id="favoriteCount">0</span>
+        `
 
         $('#time-line').prepend(html); //できあがったテンプレートをビューに追加
         console.log("appendしたよ");

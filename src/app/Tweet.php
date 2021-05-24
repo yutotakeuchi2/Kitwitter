@@ -36,7 +36,7 @@ class Tweet extends Model
 
     public static function destroyTweet($tweet_id){
         Tweet::destroy($tweet_id);
-        return Tweet::all()->sortByDesc('id');
+        return Tweet::withCount('favorites')->orderBy('id', 'desc')->get();
     }
 
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
@@ -47,18 +47,23 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-            $data = Tweet::all()->sortByDesc('created_at');
+
+
+        $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
             return $data;
 
 }
 
     public static function getOneTweet($id){
-        $return_tweet = Tweet::with('user')->find($id);//findだとコレクションの構造が違い共通テンプレートで表示するのに不便なため、wheregetを使用
+        // $return_tweet = Tweet::with('user')->find($id);//findだとコレクションの構造が違い共通テンプレートで表示するのに不便なため、wheregetを使用
+
+        $return_tweet = Tweet::withCount('favorites')->with('user')->find($id);
+
         return $return_tweet;
     }
 
     public static function searchTweets($userIds, $keyword){
-        $tweets = Tweet::whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
+        $tweets = Tweet::withCount('favorites')->whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
         return $tweets;
     }
 
@@ -68,5 +73,12 @@ public function user() {
 
     return $this->belongsTo('App\User');
 }
+
+//tweet_tableとfavorite_tableの一対多のリレーション
+public function favorites(){
+    return $this->hasMany('App\Favorite');
+}
+
+
 
 }

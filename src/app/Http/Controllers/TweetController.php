@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Tweet;
 use App\TweetGet;
 use App\User;
+use App\Favorite;
 
 class TweetController extends Controller
 {
     public function store(Request $formData){
         $data = Tweet::addTweet($formData);//本来はコントローラーで保存する要素の制限をする→データの抽出
         return response()->json($data);
-        //$tweet_text = Tweet::addTweet($request);
-        //return view("/test",compact("tweet_text"));
     }
 
     public function destroy($tweet_id){
@@ -23,10 +22,16 @@ class TweetController extends Controller
 
     public function index()
     {
+        $tweet = [];
         $tweets = new Tweet();
+        $data = $tweets->getTweet();
+        $favorite_model = new Favorite;
+        $tweets = [
+                    'data' => $data,
+                    'favorite_model' => $favorite_model,
+        ];
 
-        $tweets = $tweets->getTweet();
-
+        //return view('/test',compact('tweets'));
         return view('/tweet/index',compact('tweets'));
     }
 
@@ -34,8 +39,14 @@ class TweetController extends Controller
 
     public function show($id)
     {
-        $tweet = Tweet::getOneTweet($id);
-        return view('/tweet/show', compact('tweet'));
+        $tweets = [];
+        $data = Tweet::getOneTweet($id);
+        $favorite_model = new Favorite;
+        $tweets = [
+                        'data' => $data,
+                        'favorite_model' => $favorite_model,
+        ];
+        return view('/tweet/show', compact('tweets'));
     }
 
 }
