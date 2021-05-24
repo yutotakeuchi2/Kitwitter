@@ -48,18 +48,19 @@ class Favorite extends Model
                             ->where('tweet_id','=',$tweet_id)
                             ->get();
 
-        // レコードが存在するなら
-        if(!$exist->isEmpty()){
+        // レコードが存在しないなら
+        if($exist->isEmpty()){
             // favoriteテーブルのレコードを削除
             // $exist->delete();
             // $exist = Favorite::where('tweet_id','$tweet_id')
             //                 ->where('user_id','$id')
             //                 ->delete();
-            return true;
-
-        // レコードが存在しないなら
-        } else {
             return false;
+
+
+        // レコードが存在するなら
+        } else {
+            return true;
             // $this->insertFavorite();
         }
 
