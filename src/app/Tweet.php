@@ -47,27 +47,17 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-        //$tweet_data = [];
+
 
         $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
-        //$favorite_model = new Favorite;
-
-        // $tweet_data = [
-        //                 'data' => $data,
-        //                 'favorite_model' => $favorite_model,
-        // ];
-
-
             return $data;
 
 }
 
     public static function getOneTweet($id){
         // $return_tweet = Tweet::with('user')->find($id);//findだとコレクションの構造が違い共通テンプレートで表示するのに不便なため、wheregetを使用
-        // $tweet_data = [];
-        $return_tweet = Tweet::withCount('favorites')->with('user')->find($id);
-        // $favorite_model = new Favorite;
 
+        $return_tweet = Tweet::withCount('favorites')->with('user')->find($id);
 
         return $return_tweet;
     }
