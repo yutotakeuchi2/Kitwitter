@@ -50,7 +50,8 @@ class Tweet extends Model
 
 
         $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
-            return $data;
+        $tweets = exclusionKeyAccount(Auth::user(), $data);
+        return $data;
 
 }
 
@@ -79,6 +80,10 @@ public function favorites(){
     return $this->hasMany('App\Favorite');
 }
 
+public static function exclusionKeyAccount ($user, $tweets){
+    $open_tweets = $tweets->where('user_id', $user->id)->orWhere('isKey', 0);
+    return $open_tweet;
+}
 
 
 }
