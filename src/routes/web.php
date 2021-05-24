@@ -32,6 +32,6 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::get('search/index','SearchController@index')->name('index');
     //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php
 
-Route::post('/favorite/store', 'FavoriteController@store');
+Route::post('api/favorite/store', 'Api\FavoriteController@store');
 
 Route::view('/test', "test");

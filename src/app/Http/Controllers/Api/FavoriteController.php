@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Favorite;
+use App\Http\Controllers\Controller;
 
 class FavoriteController extends Controller
 {

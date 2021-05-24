@@ -8,7 +8,7 @@ function favoriteByAjax() {
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
-      url: '/favorite/store',
+      url: '/api/favorite/store',
       type: 'POST',
       data: {
         'tweet_id': $post_id
