@@ -14,9 +14,10 @@
                     <div class="card-header">ユーザー詳細</div>
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
-                           @foreach($tweets['data'] as $tweet)
-                         {{$tweets['favorite_model']->favoriteExist(Auth::user()->id,$tweet->id)}}
+                    @foreach($tweets['data'] as $tweet)
+                        {{$tweet->id}}<br><br>
                     @endforeach
+                         {{-- {{$tweets['data']}} --}}
 
                         </div>
                         <div class="card-body" id="time-line">
