@@ -49,8 +49,10 @@ class Tweet extends Model
     public static function getTweet(){
 
 
-        $data = Tweet::withCount('favorites')->orderBy('created_at','desc')->get();
-        $tweets = exclusionKeyAccount(Auth::user(), $data);
+        $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
+            $query->where('isKey', 0);
+        })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        //$tweets = Tweet::exclusionKeyAccount(Auth::user(), $data);
         return $data;
 
 }
@@ -65,7 +67,8 @@ class Tweet extends Model
 
     public static function searchTweets($userIds, $keyword){
         $tweets = Tweet::withCount('favorites')->whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
-        return $tweets;
+        $data = Tweet::exclusionKeyAccount(Auth::user(), $tweets);
+        return $data;
     }
 
 protected $fillable = ['text'];
@@ -81,8 +84,12 @@ public function favorites(){
 }
 
 public static function exclusionKeyAccount ($user, $tweets){
-    $open_tweets = $tweets->where('user_id', $user->id)->orWhere('isKey', 0);
-    return $open_tweet;
+    $open_tweets = $tweets->where('user_id', $user->id);
+    $key_tweets = $tweets->where('user.isKey', 0);
+    if(!$key_tweets->isEmpty()){
+        $open_tweets->combine($key_tweets);
+    }
+    return $open_tweets;
 }
 
 
