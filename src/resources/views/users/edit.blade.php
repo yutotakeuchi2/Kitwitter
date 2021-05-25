@@ -18,14 +18,14 @@
             </div>
             <div class="form-group">
             <label for="email">
-                email
+                Eメール
             </label>
             <div>
                 <input type="text" name="email" class="form-control" value="{{ $user->email }}">
             </div>
             <div class="form-group">
             <label for="key">
-                アカウントテイタス
+                アカウント公開設定
             </label>
             <div>
 
