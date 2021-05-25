@@ -50,4 +50,8 @@ class UsersController extends Controller
         //return view("/test", compact('tweets'));
         return view('users/show',compact('tweets'));
     }
+
+    public function destroy(){
+        return view('users.destroy', ['user' => Auth::user() ]);
+    }
 }
