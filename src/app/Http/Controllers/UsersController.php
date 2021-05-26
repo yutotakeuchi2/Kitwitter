@@ -51,7 +51,19 @@ class UsersController extends Controller
         return view('users/show',compact('tweets'));
     }
 
-    public function destroy(){
-        return view('users.destroy', ['user' => Auth::user() ]);
+//ユーザーの論理削除を実行
+    public function destroy($id){
+
+        $user_id = Auth::user()->id;
+
+        if($id !== $user_id){
+            return back();
+        }
+
+        $user = User::find($id);
+        $user -> delete();
+        return view('/welcome');
     }
+
+
 }

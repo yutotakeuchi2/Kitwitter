@@ -8,15 +8,15 @@
         <div class="card-header">退会手続き</div>
         <div class="card-body">
             <div>
-                <p>User：{{ $user->name }}</p>
-            </div>
-            <div>
                 <h2>アカウントが削除されます</h2>
                 <p>※kitwitterアカウントの削除プロセスを開始します。今後は、本アカウントの利用ができなくなります。</p>
                 <p>※アカウントの復活はいつでも可能です。</p>
             </div>
             <div>
+                <form  method="post" action="/users/destroy/{{Auth::user()->id}}">
                 <input type="submit" value="アカウント削除">
+                @csrf
+                </form>
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@
         <div class="card">
         <div class="card-header">アカウントの削除</div>
         <div class="card-body">
-            <a href="{{url('users/destroy')}}">アカウントの削除ページ</a>
+            <a href="{{url('users/destroy/confirm')}}">アカウントの削除ページ</a>
         </div>
     </div>
     </div>
