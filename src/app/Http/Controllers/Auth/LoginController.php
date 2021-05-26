@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -48,14 +49,24 @@ public function redirectPath()
     //AuthenticatesUsers.phpの記述をオーバーライド
     protected function sendFailedLoginResponse(Request $request){
 
-        // ログイン時に入力されたメールアドレスからユーザーを探す
-        $user = User::onlyTrashed()->where('email', $request->email)->get();
-        //     $user = User::where('email', $request->email)->first();
-        //return view('/test',compact('user'));
-        $user_pass = User::onlyTrashed()->where('password',)
-        if(!$user->isEmpty()){
-            return view('/users/restore',compact('user'));
-        }
+        $user = User::onlyTrashed()->where('email', $request->email)->first();
+            if($user){
+                if( Hash::check($request->password,$user->password)){
+                    // return view('/test');
+                    return view('/users/restore',compact('user'));
+                }
+            }
+
+        // return view('/test',compact('user_pass'));
+
+        // // ログイン時に入力されたメールアドレスからユーザーを探す
+        // $user = User::onlyTrashed()->where('email', $request->email)->get();
+        // //     $user = User::where('email', $request->email)->first();
+        // //return view('/test',compact('user'));
+        // //$user_pass = User::onlyTrashed()->where('password',)
+        // if(!$user->isEmpty()){
+        //     return view('/users/restore',compact('user'));
+        // }
 
     }
 }

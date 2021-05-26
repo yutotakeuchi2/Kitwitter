@@ -11,12 +11,12 @@
                     <div class="card-header">アカウント復帰</div>
                         <div class="card-body" id="user-profile">
                             <h3>このアカウントを復帰しますか？</h3>
-                            <h4>{{$user[0]->name}}</h4>
+                            <h4>{{$user->name}}</h4>
                             <p>アカウントの削除操作は取り消されます。</p>
                         </div>
                         <div>
-                          <a href="/users/restore/{{$user[0]->id}}" class="account-restore-select">はい</a>
-                          <a href="/" class="account-restore-select">いいえ(TOPへ戻る)</a>
+                            <a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>
+                            <a href="/" class="account-restore-select">いいえ(TOPへ戻る)</a>
                         </div>
                     </div>
                 </div>
