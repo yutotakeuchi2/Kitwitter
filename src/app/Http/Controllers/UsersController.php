@@ -65,5 +65,9 @@ class UsersController extends Controller
         return redirect('/');
     }
 
+    public function restore($id){
+        User::onlyTrashed()->find($id)->restore();
+        redirect('/login');
+    }
 
 }

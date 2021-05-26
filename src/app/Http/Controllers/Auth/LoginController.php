@@ -54,9 +54,7 @@ public function redirectPath()
         //return view('/test',compact('user'));
         $user_pass = User::onlyTrashed()->where('password',)
         if(!$user->isEmpty()){
-            if()
-
-            return view('/test',compact('user'));
+            return view('/users/restore',compact('user'));
         }
 
     }
