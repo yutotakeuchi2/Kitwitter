@@ -30,6 +30,7 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::get('users/show/{id}','UsersController@show');
     Route::post('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
     Route::view('users/destroy/confirm',"users/destroy");
+    Route::get('users/restore/{id}', "UsersController@restore");
 
 //});
     Route::get('search/index','SearchController@index')->name('index');
