@@ -43,15 +43,16 @@ public function redirectPath()
     }
 
     //AuthenticatesUsers.phpの記述をオーバーライド
-    protected function sendFailedLoginResponse(Request $request){
+    // protected function sendFailedLoginResponse(Request $request){
 
-         // ログイン時に入力されたメールアドレスからユーザーを探す
-        $user = User::onlyTrashed()->where('email', $request->email)->get();
+    //      // ログイン時に入力されたメールアドレスからユーザーを探す
+    //     //$user = User::onlyTrashed()->where('email', $request->email)->get();
+    //     $user = User::where('email', $request->email)->first();
+    //     return view('/test',compact('user'));
+    //     // if(!$user->isEmpty()){
+    //     //     return view('/test',compact('user'));
+    //     // }
 
-        if(!$user->isEmpty()){
-            return view('/test',compact('user'));
-        }
-
-    }
+    // }
 }
 

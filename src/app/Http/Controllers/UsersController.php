@@ -56,13 +56,13 @@ class UsersController extends Controller
 
         $user_id = Auth::user()->id;
 
-        if($id !== $user_id){
+        if($id != $user_id){
             return back();
         }
 
         $user = User::find($id);
         $user -> delete();
-        return view('/welcome');
+        return redirect('/');
     }
 
 
