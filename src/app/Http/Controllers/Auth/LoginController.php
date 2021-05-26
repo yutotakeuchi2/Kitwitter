@@ -41,5 +41,17 @@ public function redirectPath()
     {
         return '/tweet/index';
     }
+
+    //AuthenticatesUsers.phpの記述をオーバーライド
+    protected function sendFailedLoginResponse(Request $request){
+
+         // ログイン時に入力されたメールアドレスからユーザーを探す
+        $user = User::onlyTrashed()->where('email', $request->email)->get();
+
+        if(!$user->isEmpty()){
+            return view('/test',compact('user'));
+        }
+
+    }
 }
 
