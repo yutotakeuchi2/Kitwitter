@@ -52,7 +52,7 @@ public function redirectPath()
         $user = User::onlyTrashed()->where('email', $request->email)->get();
 
         if(!$user->isEmpty()){
-            return view('/test',compact('user'));
+            return view('/users/restore',compact('user'));
         }
 
     }
