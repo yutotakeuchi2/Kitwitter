@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -43,16 +46,19 @@ public function redirectPath()
     }
 
     //AuthenticatesUsers.phpの記述をオーバーライド
-    // protected function sendFailedLoginResponse(Request $request){
+    protected function sendFailedLoginResponse(Request $request){
 
-    //      // ログイン時に入力されたメールアドレスからユーザーを探す
-    //     //$user = User::onlyTrashed()->where('email', $request->email)->get();
-    //     $user = User::where('email', $request->email)->first();
-    //     return view('/test',compact('user'));
-    //     // if(!$user->isEmpty()){
-    //     //     return view('/test',compact('user'));
-    //     // }
+        // ログイン時に入力されたメールアドレスからユーザーを探す
+        $user = User::onlyTrashed()->where('email', $request->email)->get();
+        //     $user = User::where('email', $request->email)->first();
+        //return view('/test',compact('user'));
+        $user_pass = User::onlyTrashed()->where('password',)
+        if(!$user->isEmpty()){
+            if()
 
-    // }
+            return view('/test',compact('user'));
+        }
+
+    }
 }
 
