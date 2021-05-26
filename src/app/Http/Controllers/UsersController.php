@@ -56,7 +56,7 @@ class UsersController extends Controller
 
         $user_id = Auth::user()->id;
 
-        if($id !== $user_id){
+        if($id != $user_id){
             return back();
         }
 
