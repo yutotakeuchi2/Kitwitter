@@ -52,20 +52,21 @@ public function redirectPath()
 
         // ログイン時に入力されたメールアドレスからユーザーを探す
         $user = User::onlyTrashed()->where('email', $request->email)->first();
-        if($user){
-            if( Hash::check($request->password,$user->password)){
-                // return view('/test');
+        if($user && Hash::check($request->password,$user->password)){
                 return view('/users/restore',compact('user'));
-            }
+        //     } else {
+        //         throw ValidationException::withMessages([
+        //         $this->username() => [trans('auth.failed')],
+        //         ]);
+        //     }
+        } else {
+            throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+            ]);
         }
 
-        $this->sendFailedLoginResponse($request);
-        // } else {
-        //     throw ValidationException::withMessages([
-        //     $this->username() => [trans('auth.failed')],
-        //     ]);
-        // }
 
+        //return $this->sendFailedLoginResponse($request);
         // return view('/test',compact('user_pass'));
 
         // // ログイン時に入力されたメールアドレスからユーザーを探す
