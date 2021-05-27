@@ -12,7 +12,7 @@
                         <div class="card-body" id="user-profile">
                             <h3>このアカウントを復帰しますか？</h3>
                             <h4>{{$user->name}}</h4>
-                            <p>アカウントの削除操作は取り消されます。</p>
+                            <p>アカウントの削除は取り消されます。</p>
                         </div>
                         <div>
                             <a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>

@@ -65,6 +65,7 @@ class UsersController extends Controller
         return redirect('/');
     }
 
+//論理削除後のアカウントの復活
     public function restore($id){
         User::onlyTrashed()->find($id)->restore();
         return redirect('/tweet/index');

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -49,13 +50,21 @@ public function redirectPath()
     //AuthenticatesUsers.phpの記述をオーバーライド
     protected function sendFailedLoginResponse(Request $request){
 
+        // ログイン時に入力されたメールアドレスからユーザーを探す
         $user = User::onlyTrashed()->where('email', $request->email)->first();
-            if($user){
-                if( Hash::check($request->password,$user->password)){
-                    // return view('/test');
-                    return view('/users/restore',compact('user'));
-                }
+        if($user){
+            if( Hash::check($request->password,$user->password)){
+                // return view('/test');
+                return view('/users/restore',compact('user'));
             }
+        }
+
+        $this->sendFailedLoginResponse($request);
+        // } else {
+        //     throw ValidationException::withMessages([
+        //     $this->username() => [trans('auth.failed')],
+        //     ]);
+        // }
 
         // return view('/test',compact('user_pass'));
 

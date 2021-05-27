@@ -14,8 +14,9 @@
             </div>
             <div>
                 <form  method="post" action="/users/destroy/{{Auth::user()->id}}">
-                <input type="submit" value="アカウント削除">
-                @csrf
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="アカウント削除">
                 </form>
             </div>
         </div>

@@ -53,12 +53,20 @@ class Tweet extends Model
 
     public static function getTweet(){
 
+        if(Auth::check()){
 
         $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
             $query->where('isKey', 0);
         })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //$tweets = Tweet::exclusionKeyAccount(Auth::user(), $data);
         return $data;
+
+        } else {
+            $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
+                $query->where('isKey', 0);
+            })->orderBy('created_at','desc')->get();
+            return $data;
+        }
 
 }
 
@@ -72,8 +80,12 @@ class Tweet extends Model
 
     public static function searchTweets($userIds, $keyword){
         $tweets = Tweet::withCount('favorites')->whereIn('user_id', $userIds)->orWhere('text', 'like', "%$keyword%")->get()->sortByDesc('created_at');
+        if(Auth::check()){
         $data = Tweet::exclusionKeyAccount(Auth::user(), $tweets);
         return $data;
+        } else {
+        return $tweets;
+        }
     }
 
 protected $fillable = ['text'];
