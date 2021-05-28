@@ -71,10 +71,10 @@ class UsersController extends Controller
         //return view('/test',compact('id','request'));
         User::onlyTrashed()->find($id)->restore();
         //Auth::loginUsingId($id);
-        if(Auth::attempt(['email' => $request->email,'password'=>$request->password])){
+        Auth::attempt(['email' => $request->email,'password'=>$request->password]);
 
-            return redirect('/tweet/index');
-        }
+        return redirect('/tweet/index');
+
     }
 
 }
