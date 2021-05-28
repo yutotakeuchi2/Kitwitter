@@ -15,7 +15,11 @@
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
                         {{$id}}<br><br>
-                        {{$request->input('password')}}
+                        {{$request->email}}
+                        {{$request->password}}
+                        {{-- @foreach ($request as $req)
+                            1:{{$req->password}}<br>
+                        @endforeach --}}
 
                         </div>
                         <div class="card-body" id="time-line">

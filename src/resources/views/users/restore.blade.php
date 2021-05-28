@@ -20,7 +20,8 @@
                             <input type="submit" class="account-restore-select" value="はい">
                             </form>--}}
                             <form action="/users/restore/{{$user->id}}" method="get">
-                            <input type="hidden" name="request" value="{{$request}}" >
+                            <input type="hidden" name="email" value="{{$request->email}}" >
+                            <input type="hidden" name="password" value="{{$request->password}}" >
                             <input type="submit" class="account-restore-select" value="はい">
                             </form>
                             {{--<a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>--}}

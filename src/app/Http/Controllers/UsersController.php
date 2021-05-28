@@ -67,14 +67,14 @@ class UsersController extends Controller
 
 //論理削除後のアカウントの復活
     public function restore($id,Request $request){
-
-    return view('/test',compact('id','request'));
+        //$request = $request->request;
+        //return view('/test',compact('id','request'));
         User::onlyTrashed()->find($id)->restore();
         //Auth::loginUsingId($id);
-        //if(Auth::attempt(['email' => $request->email,'password'=>$request->password])){
+        if(Auth::attempt(['email' => $request->email,'password'=>$request->password])){
 
             return redirect('/tweet/index');
-        //}
+        }
     }
 
 }
