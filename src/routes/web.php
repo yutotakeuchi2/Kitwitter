@@ -28,7 +28,7 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::get('users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
-    Route::post('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
+    Route::delete('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
     Route::view('users/destroy/confirm',"users/destroy");
     Route::get('users/restore/{id}', "UsersController@restore");
 
