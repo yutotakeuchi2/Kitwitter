@@ -15,17 +15,16 @@
                             <p>アカウントの削除は取り消されます。</p>
                         </div>
                         <div>
-                            {{--<form action="/users/restore/{{$user->id}}" method="post">
-                            <input type="password" name="password" size="10" maxlength="8" >
-                            <input type="submit" class="account-restore-select" value="はい">
-                            </form>--}}
-                            <form action="/users/restore/{{$user->id}}" method="get">
+                            <div class="account-restore-select">
+                            <form action="/users/restore/{{$user->id}}" method="post">
+                            @csrf
                             <input type="hidden" name="email" value="{{$request->email}}" >
                             <input type="hidden" name="password" value="{{$request->password}}" >
-                            <input type="submit" class="account-restore-select" value="はい">
+                            <input type="submit" class="restore-btn-margin" value="復帰">
                             </form>
-                            {{--<a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>--}}
-                            <a href="/" class="account-restore-select">いいえ(TOPへ戻る)</a>
+                            </div>
+
+                            <p class="account-restore-position"><a href="/" >TOPへ戻る</a></p>
                         </div>
                     </div>
                 </div>
