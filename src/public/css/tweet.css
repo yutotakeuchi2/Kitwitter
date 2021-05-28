@@ -54,3 +54,20 @@ p.delete{
 .bottom-line{
     border-bottom: 1px solid rgb(202, 202, 202);
 }
+
+.account-restore-select{
+    padding: 10px;
+    margin-left: 30px;
+
+}
+
+.account-restore-position{
+    text-align: end;
+    margin-right: 14px;
+}
+
+.restore-btn-margin{
+    padding: 10px;
+    font-size: 15px;
+
+}

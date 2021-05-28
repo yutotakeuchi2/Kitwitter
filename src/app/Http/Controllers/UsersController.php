@@ -50,4 +50,31 @@ class UsersController extends Controller
         //return view("/test", compact('tweets'));
         return view('users/show',compact('tweets'));
     }
+
+//ユーザーの論理削除を実行
+    public function destroy($id){
+
+        $user_id = Auth::user()->id;
+
+        if($id != $user_id){
+            return back();
+        }
+
+        $user = User::find($id);
+        $user -> delete();
+        return redirect('/');
+    }
+
+//論理削除後のアカウントの復活
+    public function restore($id,Request $request){
+        //$request = $request->request;
+        //return view('/test',compact('id','request'));
+        User::onlyTrashed()->find($id)->restore();
+        //Auth::loginUsingId($id);
+        Auth::attempt(['email' => $request->email,'password'=>$request->password]);
+
+        return redirect('/tweet/index');
+
+    }
+
 }

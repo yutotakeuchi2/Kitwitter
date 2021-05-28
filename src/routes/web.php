@@ -28,6 +28,10 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::get('users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
+    Route::delete('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
+    Route::view('users/destroy/confirm',"users/destroy");
+    Route::post('users/restore/{id}', "UsersController@restore");
+
 //});
     Route::get('search/index','SearchController@index')->name('index');
     //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php
