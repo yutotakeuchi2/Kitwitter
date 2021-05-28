@@ -42,7 +42,7 @@ function sendTweet(formData) {
 
         html += ` <p class="delete"><a href="/destroy/${data.original.id}">削除</a></p>
         </div></div></div>
-        <a href="#" class="favorite-button" data-postid="${data.original.id}"><i class="fas fa-heart fa-2x my-pink"></i></a>
+        <a href="#" class="favorite-button bottom-line" data-postid="${data.original.id}"><i class="fas fa-heart fa-2x my-pink"></i></a>
         <span id="favoriteCount">0</span>
         `
 

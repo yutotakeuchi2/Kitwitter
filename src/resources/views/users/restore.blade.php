@@ -15,7 +15,15 @@
                             <p>アカウントの削除は取り消されます。</p>
                         </div>
                         <div>
-                            <a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>
+                            {{--<form action="/users/restore/{{$user->id}}" method="post">
+                            <input type="password" name="password" size="10" maxlength="8" >
+                            <input type="submit" class="account-restore-select" value="はい">
+                            </form>--}}
+                            <form action="/users/restore/{{$user->id}}" method="get">
+                            <input type="hidden" name="request" value="{{$request}}" >
+                            <input type="submit" class="account-restore-select" value="はい">
+                            </form>
+                            {{--<a href="/users/restore/{{$user->id}}" class="account-restore-select">はい</a>--}}
                             <a href="/" class="account-restore-select">いいえ(TOPへ戻る)</a>
                         </div>
                     </div>

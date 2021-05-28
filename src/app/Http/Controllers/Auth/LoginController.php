@@ -53,30 +53,13 @@ public function redirectPath()
         // ログイン時に入力されたメールアドレスからユーザーを探す
         $user = User::onlyTrashed()->where('email', $request->email)->first();
         if($user && Hash::check($request->password,$user->password)){
-                return view('/users/restore',compact('user'));
-        //     } else {
-        //         throw ValidationException::withMessages([
-        //         $this->username() => [trans('auth.failed')],
-        //         ]);
-        //     }
+                return view('/users/restore',compact('user','request'));
+
         } else {
             throw ValidationException::withMessages([
             $this->username() => [trans('auth.failed')],
             ]);
         }
-
-
-        //return $this->sendFailedLoginResponse($request);
-        // return view('/test',compact('user_pass'));
-
-        // // ログイン時に入力されたメールアドレスからユーザーを探す
-        // $user = User::onlyTrashed()->where('email', $request->email)->get();
-        // //     $user = User::where('email', $request->email)->first();
-        // //return view('/test',compact('user'));
-        // //$user_pass = User::onlyTrashed()->where('password',)
-        // if(!$user->isEmpty()){
-        //     return view('/users/restore',compact('user'));
-        // }
 
     }
 }
