@@ -16,8 +16,9 @@ class TweetController extends Controller
     }
 
     public function destroy($tweet_id){
-        $tweets = Tweet::destroyTweet($tweet_id);
-        return view("/tweet/index", compact("tweets"));
+        Tweet::destroyTweet($tweet_id);
+        return back();
+        // return view("/tweet/index", compact("tweets"));
     }
 
     public function index()
