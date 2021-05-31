@@ -71,3 +71,15 @@ p.delete{
     font-size: 15px;
 
 }
+
+.tweet-textarea{
+    margin: auto;
+    font-size: 20px;
+}
+
+.tweet-button{
+    right: 0;
+    padding: 20px;
+    background-color: rgb(18, 103, 214);
+    text-align: right;
+}

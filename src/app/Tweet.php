@@ -42,12 +42,10 @@ class Tweet extends Model
     public static function destroyTweet($tweet_id){
         $delete_tweet = Tweet::with('user')->find($tweet_id);
         if($delete_tweet->user->id == Auth::user()->id){
-                    Tweet::destroy($tweet_id);
+            Tweet::destroy($tweet_id);
         }else{
             return redirect('/tweet/index');
         }
-
-        //return Tweet::withCount('favorites')->orderBy('id', 'desc')->get();
         return;
     }
 
