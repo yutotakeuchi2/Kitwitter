@@ -101,12 +101,16 @@ public function favorites(){
 }
 
 public static function exclusionKeyAccount ($user, $tweets){
+    //return $tweets;
     $open_tweets = $tweets->where('user_id', $user->id);
     $key_tweets = $tweets->where('user.isKey', 0);
     if(!$key_tweets->isEmpty()){
-        $open_tweets->concat($key_tweets)->sortByDesc('created_at');
+        foreach ($key_tweets as $tweet) {
+            $open_tweets->push($tweet);
+        }
+        //$open_tweets->concat($key_tweets)->sortByDesc('created_at');
     }
-    return $open_tweets;
+    return $open_tweets->unique()->sortByDesc('created_at');
 }
 
 

@@ -15,9 +15,10 @@
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
 
-                        @foreach ($tweets as $tweet)
-                            1:{{$tweet}}<br>
+                        @foreach ($tweets['data'][0] as $tweet)
+                            ・{{$tweet}}<br>
                         @endforeach
+                        {{-- {{$searchUserId}} --}}
 
                         </div>
                         <div class="card-body" id="time-line">
