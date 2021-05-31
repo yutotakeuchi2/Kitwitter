@@ -104,7 +104,7 @@ public static function exclusionKeyAccount ($user, $tweets){
     $open_tweets = $tweets->where('user_id', $user->id);
     $key_tweets = $tweets->where('user.isKey', 0);
     if(!$key_tweets->isEmpty()){
-        $open_tweets->combine($key_tweets);
+        $open_tweets->concat($key_tweets)->sortByDesc('created_at');
     }
     return $open_tweets;
 }

@@ -14,12 +14,10 @@
                     <div class="card-header">ユーザー詳細</div>
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
-                        {{$id}}<br><br>
-                        {{$request->email}}
-                        {{$request->password}}
-                        {{-- @foreach ($request as $req)
-                            1:{{$req->password}}<br>
-                        @endforeach --}}
+
+                        @foreach ($tweets as $tweet)
+                            1:{{$tweet}}<br>
+                        @endforeach
 
                         </div>
                         <div class="card-body" id="time-line">

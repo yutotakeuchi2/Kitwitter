@@ -25,7 +25,8 @@ class SearchController extends Controller
                         'data' => $data,
                         'favorite_model' => $favorite_model,
         ];
-        //return view('test',compact('tweets'));
+        return view('test',compact('tweets'));
         return view('search/index',compact('tweets'));
+
     }
 }
