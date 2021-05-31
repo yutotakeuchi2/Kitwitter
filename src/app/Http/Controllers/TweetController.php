@@ -47,6 +47,9 @@ class TweetController extends Controller
                         'data' => $data,
                         'favorite_model' => $favorite_model,
         ];
+        if(!isset($tweets['data'])){
+            return redirect('/tweet/index');
+        }
         return view('/tweet/show', compact('tweets'));
     }
 
