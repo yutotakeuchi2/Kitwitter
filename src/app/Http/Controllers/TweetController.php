@@ -16,8 +16,9 @@ class TweetController extends Controller
     }
 
     public function destroy($tweet_id){
-        $tweets = Tweet::destroyTweet($tweet_id);
-        return view("/tweet/index", compact("tweets"));
+        Tweet::destroyTweet($tweet_id);
+        return back();
+        // return view("/tweet/index", compact("tweets"));
     }
 
     public function index()
@@ -46,6 +47,9 @@ class TweetController extends Controller
                         'data' => $data,
                         'favorite_model' => $favorite_model,
         ];
+        if(!isset($tweets['data'])){
+            return redirect('/tweet/index');
+        }
         return view('/tweet/show', compact('tweets'));
     }
 

@@ -18,6 +18,7 @@ class SearchController extends Controller
 
         $keyword = $request->input('keyword');
         $searchUserId = User::getUserIds($keyword);
+        //return view('/test',compact('searchUserId'));
         $data = Tweet::searchTweets($searchUserId,$keyword);
         $favorite_model = new Favorite;
 
@@ -27,5 +28,6 @@ class SearchController extends Controller
         ];
         //return view('test',compact('tweets'));
         return view('search/index',compact('tweets'));
+
     }
 }

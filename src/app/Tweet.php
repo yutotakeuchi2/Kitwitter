@@ -40,8 +40,13 @@ class Tweet extends Model
     }
 
     public static function destroyTweet($tweet_id){
-        Tweet::destroy($tweet_id);
-        return Tweet::withCount('favorites')->orderBy('id', 'desc')->get();
+        $delete_tweet = Tweet::with('user')->find($tweet_id);
+        if($delete_tweet->user->id == Auth::user()->id){
+            Tweet::destroy($tweet_id);
+        }else{
+            return redirect('/tweet/index');
+        }
+        return;
     }
 
     // モデルで空欄例外処理　コントローラーで必要な要素だけ分解する　一緒にいろいろ送るときのデータ構造が違った？stringにキャストしたら治った臭い　要確認...
@@ -101,12 +106,16 @@ public function favorites(){
 }
 
 public static function exclusionKeyAccount ($user, $tweets){
+    //return $tweets;
     $open_tweets = $tweets->where('user_id', $user->id);
     $key_tweets = $tweets->where('user.isKey', 0);
     if(!$key_tweets->isEmpty()){
-        $open_tweets->combine($key_tweets);
+        foreach ($key_tweets as $tweet) {
+            $open_tweets->push($tweet);
+        }
+        //$open_tweets->concat($key_tweets)->sortByDesc('created_at');
     }
-    return $open_tweets;
+    return $open_tweets->unique()->sortByDesc('created_at');
 }
 
 

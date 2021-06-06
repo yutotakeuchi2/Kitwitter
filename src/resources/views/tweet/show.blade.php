@@ -2,6 +2,9 @@
 
 @section('content')
 
+<?php
+
+?>
 
 <div class="search-wrapper">
     <div class="container">

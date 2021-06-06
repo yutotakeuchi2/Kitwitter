@@ -13,28 +13,32 @@
             @if ($date_flag === 1)
             <p class="mt-5">{{$tweet->created_at}}</p>
             @endif
-            <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a></p>
+            @if(Auth::check())
+                @if ($tweet->user->id == Auth::user()->id)
+                    <p class="delete"><a href="/destroy/{{$tweet->id}}">削除</a></p>
+                @endif
+            @endif
         </div>
     </div>
 </div>
 <div class="bottom-line">
-        @if(Auth::check())
+    @if(Auth::check())
         @if($tweets['favorite_model']->favoriteExist(Auth::user()->id,$tweet->id))
-        <p class="favorite-mark"></p>
+            <p class="favorite-mark"></p>
                 <span  data-postid="{{$tweet->id}}" class="favorite-button doneFav"><i class="fas fa-heart fa-2x my-pink"></i></span>
-                            <span id="favoriteCount">{{$tweet->favorites_count}}</span>
-        </p>
+                <span id="favoriteCount">{{$tweet->favorites_count}}</span>
+            </p>
         @else
         <p class="favorite-mark"></p>
                 <span data-postid="{{$tweet->id}}" class="favorite-button "><i class="fas fa-heart fa-2x my-pink"></i></span>
-                            <span id="favoriteCount">{{$tweet->favorites_count}}</span>
-        </p>
+                <span id="favoriteCount">{{$tweet->favorites_count}}</span>
+            </p>
         @endif
-        @else
+    @else
         <p class="favorite-mark"></p>
-                <span data-postid="{{$tweet->id}}" class="favorite-button "><i class="fas fa-heart fa-2x my-pink"></i></span>
-                            <span id="favoriteCount">{{$tweet->favorites_count}}</span>
+            <span data-postid="{{$tweet->id}}" class="favorite-button "><i class="fas fa-heart fa-2x my-pink"></i></span>
+            <span id="favoriteCount">{{$tweet->favorites_count}}</span>
         </p>
-        @endif
+    @endif
 </div>
 
