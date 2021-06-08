@@ -17,6 +17,9 @@ function sendTweet(formData) {
         processData: false,
         contentType: false,
     }).done(function (data) { //ajaxが成功したときの処理
+        if (typeof data == "string") {
+            alert(data);
+        }
         console.log("成功しました");
         initForm();
         console.log(data);

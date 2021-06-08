@@ -18,7 +18,9 @@ class Tweet extends Model
     public static function addTweet($formData){
         Log::info($formData);
 //return $formData;
-
+        if($formData->sentence == "" && $formData->image == null){
+            return "ツイート内容が空です";
+        }
         $tweet = new Tweet();
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
