@@ -18,18 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 //Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/tweet/index','TweetController@index');
-Route::post('/tweet/store', 'TweetController@store');
-Route::get('/destroy/{id}', 'TweetController@destroy');
+Route::post('/tweet/store', 'TweetController@store')->middleware('auth');
+Route::get('/destroy/{id}', 'TweetController@destroy')->middleware('auth');
 Route::get('tweet/show/{id}','TweetController@show');
 
 //Route::group(['prefix' => 'users'], function()
 //{
     //Route::get('users/index', 'UsersController@index');
-    Route::get('users/edit', 'UsersController@edit')->name('users.edit');
+    Route::get('users/edit', 'UsersController@edit')->middleware('auth')->name('users.edit');
     Route::post('users/edit', 'UsersController@update');
     Route::get('users/show/{id}','UsersController@show');
     Route::delete('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
-    Route::view('users/destroy/confirm',"users/destroy");
+    Route::view('users/destroy/confirm',"users/destroy")->middleware('auth');
     Route::post('users/restore/{id}', "UsersController@restore");
 
 //});
