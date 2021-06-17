@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\UsersController;
+
 Route::get('/', function () {
     return view('welcome');//ルートがindexで、ログインされてななければwelcomeに飛ばす形でもいい？
 });
@@ -31,7 +33,8 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::delete('users/destroy/{id}','UsersController@destroy')->name('users.destroy');
     Route::view('users/destroy/confirm',"users/destroy")->middleware('auth');
     Route::post('users/restore/{id}', "UsersController@restore");
-
+    Route::get('users/follow/{id}', "UsersController@follow")->middleware('auth');
+    Route::get('users/unfollow/{id}', "UsersController@unFollow")->middleware('auth');
 //});
     Route::get('search/index','SearchController@index')->name('index');
     //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php

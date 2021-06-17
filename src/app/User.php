@@ -72,5 +72,26 @@ class User extends Authenticatable
         return $user_data;
     }
 
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'follows', 'following', 'follow_by');//関係性を定義してる？だからfollowなら自分から見た誰をフォローするかを変数にして...みたいな
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(self::class, 'follows', 'follow_by', 'following'); //やっぱ子のリレーションの関係性と仕組みぱっと出てこんわ　要復習です
+    }
+
+    public function follow($user_id){
+        return $this->follows()->attach($user_id);
+    }
+
+    public function unFollow($user_id){
+        return $this->follows()->detach($user_id);
+    }
+
+    public function isFollow($user_id){
+        return (boolean)$this->follows()->where("following", $user_id)->first();
+    }
 
 }

@@ -15,6 +15,13 @@
                         <div class="card-header">Tweets</div>
                             <div class="card-body" id="time-line">
                                 @foreach ($tweets['data']->tweets()->orderBy('created_at','desc')->withCount('favorites')->get() as $tweet)
+                                <?php $user_id = $tweets['data']->id; ?>
+                                {{-- よー分らんけどifの中にこれ直接入れるとエラー出るから代入 --}}
+                                @if(Auth::user()->isFollow($user_id))
+                                    <a href="/users/unfollow/{{$user_id}}">フォロー解除する</a>
+                                @else
+                                    <a href="/users/follow/{{$user_id}}">ふぉろーする</a>
+                                @endif
                                     @include('tweet.tweetTemplate', ['tweet' => $tweet, 'date_flag' => 0])
                                 @endforeach
                             </div>

@@ -14,10 +14,7 @@
                     <div class="card-header">ユーザー詳細</div>
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
-
-                        @foreach ($tweets['data'][0] as $tweet)
-                            ・{{$tweet}}<br>
-                        @endforeach
+                          {{$bool}}
                         {{-- {{$searchUserId}} --}}
 
                         </div>

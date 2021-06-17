@@ -13,7 +13,7 @@ class CreateFollowsTable extends Migration
      */
     public function up()
     {
-        Schema::table('follows', function (Blueprint $table) {
+        Schema::create('follows', function (Blueprint $table) {
             $table->unsignedInteger("follow_by");
             $table->unsignedInteger("following");
 
@@ -31,7 +31,7 @@ class CreateFollowsTable extends Migration
     public function down()
     {
         Schema::table('follows', function (Blueprint $table) {
-            //
+            $table->dropIfExists('follows');
         });
     }
 }

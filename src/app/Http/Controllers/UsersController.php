@@ -77,4 +77,21 @@ class UsersController extends Controller
 
     }
 
+    public function follow($follow_id){
+        $user = Auth::user();
+        $user->follow($follow_id);
+        return back();
+    }
+
+    public function unFollow($user_id){
+        $user = Auth::user();
+        $user->unFollow($user_id);
+        return back();
+    }
+
+    public function isFollow($user_id){
+        $bool = Auth::user()->isFollow($user_id);
+        return view("test", compact("bool"));
+    }
+
 }
