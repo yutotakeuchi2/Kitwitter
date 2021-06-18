@@ -89,6 +89,18 @@ class UsersController extends Controller
         return back();
     }
 
+    public function follows($id){
+        $user = User::getUserData($id);
+        $follows_data = $user->follows()->get();
+        return view("users/follows", compact("follows_data"));
+    }
+
+    public function follower($id){
+        $user = User::getUserData($id);
+        $follower_data = $user->followers()->get();
+        return view("users/follower", compact("follower_data"));
+    }
+
     public function isFollow($user_id){
         $bool = Auth::user()->isFollow($user_id);
         return view("test", compact("bool"));

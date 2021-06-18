@@ -97,11 +97,13 @@
     <script src="{{ asset('/js/validateSearch.js')}}"></script>
     <script src="{{ asset('/js/tweetLink.js')}}"></script>
     <script src="{{ asset('/js/favorite.js')}}"></script>
+    <script src="{{asset('/js/followButton.js')}}"></script>
     <script>
         $(function (){
             tweetByAjax();
             favoriteByAjax();
             linkToTweetShow($);
+            followButton();
         })
     </script>
 </body>
