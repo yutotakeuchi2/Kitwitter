@@ -18,7 +18,9 @@ class Tweet extends Model
     public static function addTweet($formData){
         Log::info($formData);
 //return $formData;
-
+        if($formData->sentence == "" && $formData->image == null){
+            return "ツイート内容が空です";
+        }
         $tweet = new Tweet();
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
@@ -57,15 +59,14 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-
+        $follows = Auth::user()->follows()->get()->pluck('id');
         if(Auth::check()){
-
-        $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
-            $query->where('isKey', 0);
-        })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        $data = Tweet::with('user')->withCount('favorites')->whereIn('user_id', $follows)->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        // $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
+        //     $query->where('isKey', 0);
+        // })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //$tweets = Tweet::exclusionKeyAccount(Auth::user(), $data);
         return $data;
-
         } else {
             $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
                 $query->where('isKey', 0);

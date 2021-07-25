@@ -26,6 +26,7 @@ class TweetController extends Controller
         $tweet = [];
         $tweets = new Tweet();
         $data = $tweets->getTweet();
+        //return view("test", compact("data"));
         $favorite_model = new Favorite;
         $tweets = [
                     'data' => $data,

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Favorite;
+use App\FollowRequest;
 
 class UsersController extends Controller
 {
@@ -24,15 +25,22 @@ class UsersController extends Controller
             'email' => 'required|email',
             'isKey' => 'required|numeric|between:0,1'
         ]);
-
-
+        //return view("/test", compact("request"));
+        $user = Auth::user();
+        if($request->file('profile_image')){
+            $path = $request->file('profile_image')->store('public/iconimage');
+            $user->profile_image = basename($path);
+        }else{
+            $user->profile_image = basename("defaulticon.png");
+        }
         $user_form = $request->all();
 
-        $user = Auth::user();
+
+
         //return view('/test',compact('user'));
         //不要な「_token」の削除
         unset($user_form['_token']);
-        //保存
+
         $user->fill($user_form)->save();
         //リダイレクト
         return redirect('/tweet/index');
@@ -75,6 +83,63 @@ class UsersController extends Controller
 
         return redirect('/tweet/index');
 
+    }
+
+    public function follow($follow_id){
+        $user = Auth::user();
+        $follow_user = User::getUserData($follow_id);
+        if($follow_user->isKey == 1){
+            $user->keyFollow($follow_id);
+            return "key";
+        }else{
+        $user->follow($follow_id);
+        return "open";
+        }
+    }
+
+    public function unFollow($user_id){
+        $user = Auth::user();
+        $user->unFollow($user_id);
+        return back();
+    }
+
+    public function follows($id){
+        $user = User::getUserData($id);
+        $follows_data = $user->follows()->get();
+        return view("users/follows", compact("follows_data"));
+    }
+
+    public function follower($id){
+        $user = User::getUserData($id);
+        $follower_data = $user->followers()->get();
+        return view("users/follower", compact("follower_data"));
+    }
+
+    public function followRequests(){
+        if(Auth::user()->isKey == 0){
+            return back();
+        }
+        $follow_request_data = Auth::user()->keyFollowers()->get();
+        return view("users/followRequest", compact("follow_request_data"));
+    }
+
+    // public function isFollow($user_id){
+    //     $bool = Auth::user()->isFollow($user_id);
+    //     //return view("test", compact("bool"));
+    // }
+
+    public function isApplication($user_id){
+        $bool = Auth::user()->isApplication($user_id);
+    }
+
+    public function acceptFollow($id){
+        $user = User::getUserData($id);
+        $user->follow(Auth::user()->id);
+        FollowRequest::where("follow_by", $id)->where("following", Auth::user()->id)->delete();
+    }
+
+    public function cancelRequest($user_id){
+        Auth::user()->cancelRequest($user_id);
     }
 
 }
