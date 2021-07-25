@@ -26,8 +26,7 @@
 
 </head>
 <body>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -70,6 +69,9 @@
                                 <div class="dropdown-menu dropdown-menu-right ml-3" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{route('users.edit')}}">ユーザー情報変更</a>
+                                    @if (Auth::user()->isKey == 1)
+                                        <a class="dropdown-item" href="/users/followRequest">承認待ち一覧</a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -104,6 +106,9 @@
             favoriteByAjax();
             linkToTweetShow($);
             followButton();
+            unfollowButton();
+            acceptFollowButton();
+            cancelRequestButton()
         })
     </script>
 </body>

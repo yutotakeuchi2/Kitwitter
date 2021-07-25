@@ -34,8 +34,9 @@ function sendTweet(formData) {
             <div class="tweetLink">
             <div id="${data.original.id}">
             <div class="tweet-line">
-            <p class="username-font">User : <a href="/users/show/${data.original.user_id}">${name}</a></p>
-            <p>${text}</p>
+            <img class="tl-icon" src="../storage/iconimage/${data.original.user.profile_image}" alt="">
+            <p class="username-font"><a href="/users/show/${data.original.user_id}">${name}</a></p>
+            <p class="tweet-text">${text}</p>
             `;
         if (extension == "image") {
             html += `<img src="../storage/tweetimage/${data.original.content_url}" class="image-size"></img>`;

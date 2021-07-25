@@ -19,7 +19,7 @@ class User extends Authenticatable
 
 
     protected $table = 'users';
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'birthday'];
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'isKey',
+        'name', 'email', 'password', 'isKey', 'biography', 'url', 'birthday'
     ];
 
     public function tweets() {
@@ -72,9 +72,18 @@ class User extends Authenticatable
         return $user_data;
     }
 
+
+
+    //フォロー関連のリレーション定義部分
+
     public function followers()
     {
         return $this->belongsToMany(self::class, 'follows', 'following', 'follow_by');//関係性を定義してる？だからfollowなら自分から見た誰をフォローするかを変数にして...みたいな
+    }
+
+    public function keyFollowers()
+    {
+        return $this->belongsToMany(self::class, 'follow_requests', 'following', 'follow_by');
     }
 
     public function follows()
@@ -82,16 +91,35 @@ class User extends Authenticatable
         return $this->belongsToMany(self::class, 'follows', 'follow_by', 'following'); //やっぱ子のリレーションの関係性と仕組みぱっと出てこんわ　要復習です
     }
 
+    public function keyFollows()
+    {
+        return $this->belongsToMany(self::class, 'follow_requests', 'follow_by', 'following');
+    }
+
+    //フォロー関連の実行/判定メソッド
+
     public function follow($user_id){
         return $this->follows()->attach($user_id);
+    }
+
+    public function keyFollow($user_id){
+        return $this->keyFollows()->attach($user_id);
     }
 
     public function unFollow($user_id){
         return $this->follows()->detach($user_id);
     }
 
+    public function cancelRequest($user_id){
+        return $this->keyFollows()->detach($user_id);
+    }
+
     public function isFollow($user_id){
         return (boolean)$this->follows()->where("following", $user_id)->first();
+    }
+
+    public function isApplication($user_id){
+        return (boolean)$this->keyFollows()->where("following", $user_id)->first();
     }
 
 }

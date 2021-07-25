@@ -59,15 +59,14 @@ class Tweet extends Model
     public $timestamps = true;
 
     public static function getTweet(){
-
+        $follows = Auth::user()->follows()->get()->pluck('id');
         if(Auth::check()){
-
-        $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
-            $query->where('isKey', 0);
-        })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        $data = Tweet::with('user')->withCount('favorites')->whereIn('user_id', $follows)->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
+        // $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
+        //     $query->where('isKey', 0);
+        // })->orWhere('user_id', Auth::user()->id)->orderBy('created_at','desc')->get();
         //$tweets = Tweet::exclusionKeyAccount(Auth::user(), $data);
         return $data;
-
         } else {
             $data = Tweet::with('user')->withCount('favorites')->whereHas('user', function($query){
                 $query->where('isKey', 0);

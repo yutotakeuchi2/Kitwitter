@@ -15,6 +15,7 @@ p.delete{
 .username-font{
     font-weight: bold;
     font-size: 20px;
+    display: inline-block;
 }
 
 .username-font span{
@@ -82,4 +83,44 @@ p.delete{
     padding: 20px;
     background-color: rgb(66, 170, 255);
     text-align: right;
+}
+
+.follow-list-button{
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+.profile-icon{
+    height: 35%;
+    width: 35%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-wrapper{
+    display: inline-block;
+    width: 60%;
+}
+
+.profile-name{
+    vertical-align: top;
+    display: inline-block;
+}
+
+
+.profile-information{
+    margin: 10px 0;
+}
+
+.profile-info{
+    margin-right: 10px;
+}
+
+.tl-icon{
+    width: 10%;
+    height: 10%;
+}
+
+.tweet-text{
+    margin-left: 70px;
 }

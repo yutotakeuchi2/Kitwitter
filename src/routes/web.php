@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 //Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/tweet/index','TweetController@index');
+Route::get('/tweet/index','TweetController@index')->middleware('auth');
 Route::post('/tweet/store', 'TweetController@store')->middleware('auth');
 Route::get('/destroy/{id}', 'TweetController@destroy')->middleware('auth');
 Route::get('tweet/show/{id}','TweetController@show');
@@ -35,8 +35,11 @@ Route::get('tweet/show/{id}','TweetController@show');
     Route::post('users/restore/{id}', "UsersController@restore");
     Route::post('users/follow/{id}', "UsersController@follow")->middleware('auth');
     Route::post('users/unfollow/{id}', "UsersController@unFollow")->middleware('auth');
-    Route::get('users/follower/{id}', "UsersController@follower");
-    Route::get('users/follows/{id}', "usersController@follows");
+    Route::get('users/follower/{id}', "UsersController@follower")->middleware('auth');
+    Route::get('users/follows/{id}', "usersController@follows")->middleware('auth');
+    Route::get('users/followRequest', "UsersController@followRequests")->middleware('auth');
+    Route::post('users/acceptFollow/{id}', "UsersController@acceptFollow");
+    Route::post('users/cancelRequest/{id}', "UsersController@cancelRequest");
 //});
     Route::get('search/index','SearchController@index')->name('index');
     //Route::get('api/search', 'Api/SearchController@read');　<<これではなくAPIとして実装する場合は別途API.php

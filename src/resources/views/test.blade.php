@@ -14,7 +14,11 @@
                     <div class="card-header">ユーザー詳細</div>
                         <div class="card-body" id="user-profile">
                           <h3>なまえ</h3>
-                          {{$follows_data}}
+
+
+                          @foreach ($data as $item)
+                              {{$item}}
+                          @endforeach
                         {{-- {{$searchUserId}} --}}
 
                         </div>
