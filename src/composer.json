@@ -26,7 +26,7 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
-        "bin-dir": "vender/bin"
+        "bin-dir": "vendor/bin"
     },
     "extra": {
         "laravel": {
