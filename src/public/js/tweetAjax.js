@@ -38,6 +38,9 @@ function sendTweet(formData) {
             <p class="username-font"><a href="/users/show/${data.original.user_id}">${name}</a></p>
             <p class="tweet-text">${text}</p>
             `;
+        if (data.original.bsimage) {
+            html += `<img src="${data.original.bsimage}" alt="" class="image-size"></img>`
+        }
         if (extension == "image") {
             html += `<img src="../storage/tweetimage/${data.original.content_url}" class="image-size"></img>`;
         } else if (extension == "video") {
