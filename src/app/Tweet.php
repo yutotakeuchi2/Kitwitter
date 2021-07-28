@@ -24,10 +24,12 @@ class Tweet extends Model
         $tweet = new Tweet();
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
-        $path = $formData->file('image')->store('public/tweetimage');
-        $tweet->content_url = basename($path);
-        $content_types = explode("/", mime_content_type("$formData->image"));
-        $tweet->content_extension = $content_types[0];
+            //$image = base64_encode(file_get_contents($formData->image->getRealPath()));
+            $path = $formData->file('image')->store('public/tweetimage');
+            $tweet->content_url = basename($path);
+            //$tweet->bsimage = $image;
+            $content_types = explode("/", mime_content_type("$formData->image"));
+            $tweet->content_extension = $content_types[0];
         }
         if(isset(Auth::user()->id)){
             $tweet->user_id = Auth::user()->id;

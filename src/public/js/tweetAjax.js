@@ -57,10 +57,13 @@ function sendTweet(formData) {
         });
 
 
-    }).fail(function () {
+    }).fail(function (data, xhr, err) {
         //ajax通信がエラーのときの処理
         alert("ツイートに失敗しました");
         console.log('どんまい！');
+        console.log(data);
+        console.log(err);
+        console.log(xhr);
     });
 }
 

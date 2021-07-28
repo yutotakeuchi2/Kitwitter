@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "askedio/laravel-soft-cascade": "^6",
+        "aws/aws-sdk-php": "^3.186",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
