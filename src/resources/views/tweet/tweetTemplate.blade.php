@@ -4,6 +4,9 @@
                 <img class="tl-icon" src="{{ asset('storage/iconimage/' . $tweet->user->profile_image)}}" alt="">
             <p class="username-font"><a href="/users/show/{{$tweet->user_id}}>">{{$tweet->user->name}}</a></p>
             <p class="tweet-text">{{$tweet->text}}</p>
+            @if(isset($tweet->bsimage))
+                <img src="{{$tweet->bsimage}}" alt="" class="image-size">
+            @endif
             @if(isset($tweet->content_url))
                 @if ($tweet->content_extension == "image")
                     <img src="{{ asset('storage/tweetimage/' . $tweet->content_url) }}" class="image-size">

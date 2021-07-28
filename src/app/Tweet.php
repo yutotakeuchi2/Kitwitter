@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Auth;
-
-
+use Aws\S3\S3Client;
 class Tweet extends Model
 {
 
@@ -24,10 +23,27 @@ class Tweet extends Model
         $tweet = new Tweet();
         $tweet->text = e(strval($formData->sentence));
         if(null !== $formData->image){
-        $path = $formData->file('image')->store('public/tweetimage');
-        $tweet->content_url = basename($path);
-        $content_types = explode("/", mime_content_type("$formData->image"));
-        $tweet->content_extension = $content_types[0];
+            $s3client = S3Client::factory([
+                'credentials' => [
+                    'key' => env('AWS_ACCESS_KEY_ID'),
+                    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                ],
+                'region' => 'ap-northeast-1',
+                'version' => 'latest',
+            ]);
+            $bucket = getenv('S3_BUCKET_NAME') ?: die('No "S3_BUCKET_NAME" config var in found in env!');
+            $result = $s3client->putObject([
+                'ACL' => 'public-read',
+                'Bucket' => $bucket,
+                'Key' => basename($formData->file('image')),
+                'Body' => fopen($formData->image, "r"),
+                'ContentType' => mime_content_type("$formData->image"),
+            ]);
+            $tweet->bsimage = $result['ObjectURL'];
+            $path = $formData->file('image')->store('public/tweetimage');
+            $tweet->content_url = basename($path);
+            $content_types = explode("/", mime_content_type("$formData->image"));
+            $tweet->content_extension = $content_types[0];
         }
         if(isset(Auth::user()->id)){
             $tweet->user_id = Auth::user()->id;
